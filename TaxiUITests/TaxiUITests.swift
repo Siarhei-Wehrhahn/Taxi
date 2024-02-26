@@ -7,7 +7,7 @@
 
 import XCTest
 
-final class Taxi_ArifUITests: XCTestCase {
+final class TaxiUITests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.

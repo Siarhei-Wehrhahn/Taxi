@@ -6,9 +6,9 @@
 //
 
 import XCTest
-@testable import Taxi_Arif
+@testable import Taxi
 
-final class Taxi_ArifTests: XCTestCase {
+final class TaxiTests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.

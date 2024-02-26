@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8160A7AA2B87EC0300418E20 /* Taxi_ArifApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8160A7A92B87EC0300418E20 /* Taxi_ArifApp.swift */; };
+		8160A7AA2B87EC0300418E20 /* Taxi_App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8160A7A92B87EC0300418E20 /* Taxi_App.swift */; };
 		8160A7AC2B87EC0300418E20 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8160A7AB2B87EC0300418E20 /* ContentView.swift */; };
 		8160A7AE2B87EC0500418E20 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8160A7AD2B87EC0500418E20 /* Assets.xcassets */; };
 		8160A7B12B87EC0500418E20 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8160A7B02B87EC0500418E20 /* Preview Assets.xcassets */; };
-		8160A7BB2B87EC0500418E20 /* Taxi_ArifTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8160A7BA2B87EC0500418E20 /* Taxi_ArifTests.swift */; };
-		8160A7C52B87EC0500418E20 /* Taxi_ArifUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8160A7C42B87EC0500418E20 /* Taxi_ArifUITests.swift */; };
-		8160A7C72B87EC0500418E20 /* Taxi_ArifUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8160A7C62B87EC0500418E20 /* Taxi_ArifUITestsLaunchTests.swift */; };
+		8160A7BB2B87EC0500418E20 /* TaxiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8160A7BA2B87EC0500418E20 /* TaxiTests.swift */; };
+		8160A7C52B87EC0500418E20 /* TaxiUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8160A7C42B87EC0500418E20 /* TaxiUITests.swift */; };
+		8160A7C72B87EC0500418E20 /* TaxiUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8160A7C62B87EC0500418E20 /* TaxiUITestsLaunchTests.swift */; };
 		8160A7D52B87EC4600418E20 /* CallTaxiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8160A7D42B87EC4600418E20 /* CallTaxiView.swift */; };
 		8160A7D72B87FA1A00418E20 /* CallTaxiDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8160A7D62B87FA1A00418E20 /* CallTaxiDetailView.swift */; };
 		8160A7DA2B87FC9E00418E20 /* PickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8160A7D92B87FC9E00418E20 /* PickerView.swift */; };
@@ -43,15 +43,15 @@
 
 /* Begin PBXFileReference section */
 		8160A7A62B87EC0300418E20 /* Taxi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Taxi.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		8160A7A92B87EC0300418E20 /* Taxi_ArifApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Taxi_ArifApp.swift; sourceTree = "<group>"; };
+		8160A7A92B87EC0300418E20 /* Taxi_App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Taxi_App.swift; sourceTree = "<group>"; };
 		8160A7AB2B87EC0300418E20 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		8160A7AD2B87EC0500418E20 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8160A7B02B87EC0500418E20 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		8160A7B62B87EC0500418E20 /* TaxiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TaxiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		8160A7BA2B87EC0500418E20 /* Taxi_ArifTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Taxi_ArifTests.swift; sourceTree = "<group>"; };
+		8160A7BA2B87EC0500418E20 /* TaxiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxiTests.swift; sourceTree = "<group>"; };
 		8160A7C02B87EC0500418E20 /* TaxiUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TaxiUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		8160A7C42B87EC0500418E20 /* Taxi_ArifUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Taxi_ArifUITests.swift; sourceTree = "<group>"; };
-		8160A7C62B87EC0500418E20 /* Taxi_ArifUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Taxi_ArifUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		8160A7C42B87EC0500418E20 /* TaxiUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxiUITests.swift; sourceTree = "<group>"; };
+		8160A7C62B87EC0500418E20 /* TaxiUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxiUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		8160A7D42B87EC4600418E20 /* CallTaxiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallTaxiView.swift; sourceTree = "<group>"; };
 		8160A7D62B87FA1A00418E20 /* CallTaxiDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallTaxiDetailView.swift; sourceTree = "<group>"; };
 		8160A7D92B87FC9E00418E20 /* PickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerView.swift; sourceTree = "<group>"; };
@@ -87,12 +87,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		813447E02B8CAEF800B3D82D /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				816F94482B895BC600F231E9 /* SettingsCallTaxiView.swift */,
+				816F94442B894FAD00F231E9 /* ServiceRowView.swift */,
+				816F94462B895B6E00F231E9 /* HeaderCallTaxiView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		8160A79D2B87EC0300418E20 = {
 			isa = PBXGroup;
 			children = (
-				8160A7A82B87EC0300418E20 /* Taxi Arif */,
-				8160A7B92B87EC0500418E20 /* Taxi ArifTests */,
-				8160A7C32B87EC0500418E20 /* Taxi ArifUITests */,
+				8160A7A82B87EC0300418E20 /* Taxi */,
+				8160A7B92B87EC0500418E20 /* TaxiTests */,
+				8160A7C32B87EC0500418E20 /* TaxiUITests */,
 				8160A7A72B87EC0300418E20 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -107,17 +117,17 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		8160A7A82B87EC0300418E20 /* Taxi Arif */ = {
+		8160A7A82B87EC0300418E20 /* Taxi */ = {
 			isa = PBXGroup;
 			children = (
 				8160A7D82B87FC6C00418E20 /* Utils */,
 				8160A7D32B87EC1F00418E20 /* HomeView */,
-				8160A7A92B87EC0300418E20 /* Taxi_ArifApp.swift */,
+				8160A7A92B87EC0300418E20 /* Taxi_App.swift */,
 				8160A7AB2B87EC0300418E20 /* ContentView.swift */,
 				8160A7AD2B87EC0500418E20 /* Assets.xcassets */,
 				8160A7AF2B87EC0500418E20 /* Preview Content */,
 			);
-			path = "Taxi Arif";
+			path = Taxi;
 			sourceTree = "<group>";
 		};
 		8160A7AF2B87EC0500418E20 /* Preview Content */ = {
@@ -128,31 +138,29 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		8160A7B92B87EC0500418E20 /* Taxi ArifTests */ = {
+		8160A7B92B87EC0500418E20 /* TaxiTests */ = {
 			isa = PBXGroup;
 			children = (
-				8160A7BA2B87EC0500418E20 /* Taxi_ArifTests.swift */,
+				8160A7BA2B87EC0500418E20 /* TaxiTests.swift */,
 			);
-			path = "Taxi ArifTests";
+			path = TaxiTests;
 			sourceTree = "<group>";
 		};
-		8160A7C32B87EC0500418E20 /* Taxi ArifUITests */ = {
+		8160A7C32B87EC0500418E20 /* TaxiUITests */ = {
 			isa = PBXGroup;
 			children = (
-				8160A7C42B87EC0500418E20 /* Taxi_ArifUITests.swift */,
-				8160A7C62B87EC0500418E20 /* Taxi_ArifUITestsLaunchTests.swift */,
+				8160A7C42B87EC0500418E20 /* TaxiUITests.swift */,
+				8160A7C62B87EC0500418E20 /* TaxiUITestsLaunchTests.swift */,
 			);
-			path = "Taxi ArifUITests";
+			path = TaxiUITests;
 			sourceTree = "<group>";
 		};
 		8160A7D32B87EC1F00418E20 /* HomeView */ = {
 			isa = PBXGroup;
 			children = (
+				813447E02B8CAEF800B3D82D /* Components */,
 				8160A7D42B87EC4600418E20 /* CallTaxiView.swift */,
 				8160A7D62B87FA1A00418E20 /* CallTaxiDetailView.swift */,
-				816F94442B894FAD00F231E9 /* ServiceRowView.swift */,
-				816F94462B895B6E00F231E9 /* HeaderCallTaxiView.swift */,
-				816F94482B895BC600F231E9 /* SettingsCallTaxiView.swift */,
 				816F944A2B895E1D00F231E9 /* CallTaxiViewModel.swift */,
 			);
 			path = HomeView;
@@ -246,7 +254,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 8160A7A12B87EC0300418E20 /* Build configuration list for PBXProject "Taxi Arif" */;
+			buildConfigurationList = 8160A7A12B87EC0300418E20 /* Build configuration list for PBXProject "Taxi" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -303,7 +311,7 @@
 				816F94432B894B5200F231E9 /* MainViewbutton.swift in Sources */,
 				816F944B2B895E1D00F231E9 /* CallTaxiViewModel.swift in Sources */,
 				8160A7AC2B87EC0300418E20 /* ContentView.swift in Sources */,
-				8160A7AA2B87EC0300418E20 /* Taxi_ArifApp.swift in Sources */,
+				8160A7AA2B87EC0300418E20 /* Taxi_App.swift in Sources */,
 				8160A7D72B87FA1A00418E20 /* CallTaxiDetailView.swift in Sources */,
 				8160A7DA2B87FC9E00418E20 /* PickerView.swift in Sources */,
 				816F94452B894FAD00F231E9 /* ServiceRowView.swift in Sources */,
@@ -314,7 +322,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8160A7BB2B87EC0500418E20 /* Taxi_ArifTests.swift in Sources */,
+				8160A7BB2B87EC0500418E20 /* TaxiTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -322,8 +330,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8160A7C72B87EC0500418E20 /* Taxi_ArifUITestsLaunchTests.swift in Sources */,
-				8160A7C52B87EC0500418E20 /* Taxi_ArifUITests.swift in Sources */,
+				8160A7C72B87EC0500418E20 /* TaxiUITestsLaunchTests.swift in Sources */,
+				8160A7C52B87EC0500418E20 /* TaxiUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -469,7 +477,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Taxi Arif/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Taxi/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "Taxi ";
@@ -498,7 +506,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Taxi Arif/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Taxi/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "Taxi ";
@@ -535,7 +543,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Taxi Arif.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Taxi Arif";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Taxi.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Taxi";
 			};
 			name = Debug;
 		};
@@ -554,7 +562,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Taxi Arif.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Taxi Arif";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Taxi.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Taxi";
 			};
 			name = Release;
 		};
@@ -595,7 +603,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		8160A7A12B87EC0300418E20 /* Build configuration list for PBXProject "Taxi Arif" */ = {
+		8160A7A12B87EC0300418E20 /* Build configuration list for PBXProject "Taxi" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8160A7C82B87EC0500418E20 /* Debug */,

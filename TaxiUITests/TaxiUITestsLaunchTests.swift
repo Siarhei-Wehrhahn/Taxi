@@ -7,7 +7,7 @@
 
 import XCTest
 
-final class Taxi_ArifUITestsLaunchTests: XCTestCase {
+final class TaxiUITestsLaunchTests: XCTestCase {
 
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true

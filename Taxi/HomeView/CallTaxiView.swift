@@ -9,7 +9,7 @@ import SwiftUI
 import MapKit
 
 struct CallTaxiView: View {
-    @StateObject var viewModel = CallTaxiViewModel
+    @StateObject var viewModel = CallTaxiViewModel()
     
     var body: some View {
         VStack {

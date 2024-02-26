@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SettingsCallTaxiView: View {
-    @EnvironmentObject var viewModel: CallTaxiViewModel
+    @StateObject var viewModel = CallTaxiViewModel()
     
     var body: some View {
         VStack {

@@ -42,14 +42,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		8160A7A62B87EC0300418E20 /* Taxi Arif.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Taxi Arif.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8160A7A62B87EC0300418E20 /* Taxi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Taxi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8160A7A92B87EC0300418E20 /* Taxi_ArifApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Taxi_ArifApp.swift; sourceTree = "<group>"; };
 		8160A7AB2B87EC0300418E20 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		8160A7AD2B87EC0500418E20 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8160A7B02B87EC0500418E20 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		8160A7B62B87EC0500418E20 /* Taxi ArifTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Taxi ArifTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8160A7B62B87EC0500418E20 /* TaxiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TaxiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8160A7BA2B87EC0500418E20 /* Taxi_ArifTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Taxi_ArifTests.swift; sourceTree = "<group>"; };
-		8160A7C02B87EC0500418E20 /* Taxi ArifUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Taxi ArifUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8160A7C02B87EC0500418E20 /* TaxiUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TaxiUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8160A7C42B87EC0500418E20 /* Taxi_ArifUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Taxi_ArifUITests.swift; sourceTree = "<group>"; };
 		8160A7C62B87EC0500418E20 /* Taxi_ArifUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Taxi_ArifUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		8160A7D42B87EC4600418E20 /* CallTaxiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallTaxiView.swift; sourceTree = "<group>"; };
@@ -100,9 +100,9 @@
 		8160A7A72B87EC0300418E20 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8160A7A62B87EC0300418E20 /* Taxi Arif.app */,
-				8160A7B62B87EC0500418E20 /* Taxi ArifTests.xctest */,
-				8160A7C02B87EC0500418E20 /* Taxi ArifUITests.xctest */,
+				8160A7A62B87EC0300418E20 /* Taxi.app */,
+				8160A7B62B87EC0500418E20 /* TaxiTests.xctest */,
+				8160A7C02B87EC0500418E20 /* TaxiUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -170,9 +170,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		8160A7A52B87EC0300418E20 /* Taxi Arif */ = {
+		8160A7A52B87EC0300418E20 /* Taxi */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8160A7CA2B87EC0500418E20 /* Build configuration list for PBXNativeTarget "Taxi Arif" */;
+			buildConfigurationList = 8160A7CA2B87EC0500418E20 /* Build configuration list for PBXNativeTarget "Taxi" */;
 			buildPhases = (
 				8160A7A22B87EC0300418E20 /* Sources */,
 				8160A7A32B87EC0300418E20 /* Frameworks */,
@@ -182,14 +182,14 @@
 			);
 			dependencies = (
 			);
-			name = "Taxi Arif";
+			name = Taxi;
 			productName = "Taxi Arif";
-			productReference = 8160A7A62B87EC0300418E20 /* Taxi Arif.app */;
+			productReference = 8160A7A62B87EC0300418E20 /* Taxi.app */;
 			productType = "com.apple.product-type.application";
 		};
-		8160A7B52B87EC0500418E20 /* Taxi ArifTests */ = {
+		8160A7B52B87EC0500418E20 /* TaxiTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8160A7CD2B87EC0500418E20 /* Build configuration list for PBXNativeTarget "Taxi ArifTests" */;
+			buildConfigurationList = 8160A7CD2B87EC0500418E20 /* Build configuration list for PBXNativeTarget "TaxiTests" */;
 			buildPhases = (
 				8160A7B22B87EC0500418E20 /* Sources */,
 				8160A7B32B87EC0500418E20 /* Frameworks */,
@@ -200,14 +200,14 @@
 			dependencies = (
 				8160A7B82B87EC0500418E20 /* PBXTargetDependency */,
 			);
-			name = "Taxi ArifTests";
+			name = TaxiTests;
 			productName = "Taxi ArifTests";
-			productReference = 8160A7B62B87EC0500418E20 /* Taxi ArifTests.xctest */;
+			productReference = 8160A7B62B87EC0500418E20 /* TaxiTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		8160A7BF2B87EC0500418E20 /* Taxi ArifUITests */ = {
+		8160A7BF2B87EC0500418E20 /* TaxiUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8160A7D02B87EC0500418E20 /* Build configuration list for PBXNativeTarget "Taxi ArifUITests" */;
+			buildConfigurationList = 8160A7D02B87EC0500418E20 /* Build configuration list for PBXNativeTarget "TaxiUITests" */;
 			buildPhases = (
 				8160A7BC2B87EC0500418E20 /* Sources */,
 				8160A7BD2B87EC0500418E20 /* Frameworks */,
@@ -218,9 +218,9 @@
 			dependencies = (
 				8160A7C22B87EC0500418E20 /* PBXTargetDependency */,
 			);
-			name = "Taxi ArifUITests";
+			name = TaxiUITests;
 			productName = "Taxi ArifUITests";
-			productReference = 8160A7C02B87EC0500418E20 /* Taxi ArifUITests.xctest */;
+			productReference = 8160A7C02B87EC0500418E20 /* TaxiUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -259,9 +259,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				8160A7A52B87EC0300418E20 /* Taxi Arif */,
-				8160A7B52B87EC0500418E20 /* Taxi ArifTests */,
-				8160A7BF2B87EC0500418E20 /* Taxi ArifUITests */,
+				8160A7A52B87EC0300418E20 /* Taxi */,
+				8160A7B52B87EC0500418E20 /* TaxiTests */,
+				8160A7BF2B87EC0500418E20 /* TaxiUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -332,12 +332,12 @@
 /* Begin PBXTargetDependency section */
 		8160A7B82B87EC0500418E20 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 8160A7A52B87EC0300418E20 /* Taxi Arif */;
+			target = 8160A7A52B87EC0300418E20 /* Taxi */;
 			targetProxy = 8160A7B72B87EC0500418E20 /* PBXContainerItemProxy */;
 		};
 		8160A7C22B87EC0500418E20 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 8160A7A52B87EC0300418E20 /* Taxi Arif */;
+			target = 8160A7A52B87EC0300418E20 /* Taxi */;
 			targetProxy = 8160A7C12B87EC0500418E20 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -472,7 +472,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Taxi Arif/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "Taxi Arif";
+				INFOPLIST_KEY_CFBundleDisplayName = "Taxi ";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -501,7 +501,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Taxi Arif/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "Taxi Arif";
+				INFOPLIST_KEY_CFBundleDisplayName = "Taxi ";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -604,7 +604,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8160A7CA2B87EC0500418E20 /* Build configuration list for PBXNativeTarget "Taxi Arif" */ = {
+		8160A7CA2B87EC0500418E20 /* Build configuration list for PBXNativeTarget "Taxi" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8160A7CB2B87EC0500418E20 /* Debug */,
@@ -613,7 +613,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8160A7CD2B87EC0500418E20 /* Build configuration list for PBXNativeTarget "Taxi ArifTests" */ = {
+		8160A7CD2B87EC0500418E20 /* Build configuration list for PBXNativeTarget "TaxiTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8160A7CE2B87EC0500418E20 /* Debug */,
@@ -622,7 +622,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8160A7D02B87EC0500418E20 /* Build configuration list for PBXNativeTarget "Taxi ArifUITests" */ = {
+		8160A7D02B87EC0500418E20 /* Build configuration list for PBXNativeTarget "TaxiUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8160A7D12B87EC0500418E20 /* Debug */,

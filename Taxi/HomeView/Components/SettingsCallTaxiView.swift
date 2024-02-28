@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct SettingsCallTaxiView: View {
-    @StateObject var viewModel = CallTaxiViewModel()
+    @EnvironmentObject var viewModel: CallTaxiViewModel
+    @State private var currentTime = Date() // Zustand für die aktuelle Zeit
     
     var body: some View {
         VStack {
@@ -22,15 +23,15 @@ struct SettingsCallTaxiView: View {
                     .padding(.trailing, 250)
             }
             .padding(10)
-            .frame(width: 365)
+            .frame(width: 360)
             .background(.lightGray)
             .foregroundColor(.white)
             .clipShape(RoundedRectangle(cornerRadius: 10))
+            .shadow(radius: 2, x: 2.2, y: 2.2)
             
             HStack {
-                
                 Button {
-                    
+                    // KartenZahlung in Zukunft einbinden
                 } label: {
                     Image(systemName: "banknote")
                         .foregroundStyle(.black)
@@ -39,31 +40,53 @@ struct SettingsCallTaxiView: View {
                         .padding(.trailing,70)
                 }
                 .padding(10)
-                .frame(width: 177)
+                .frame(width: 175)
                 .background(.lightGray)
                 .foregroundColor(.white)
                 .clipShape(RoundedRectangle(cornerRadius: 10))
+                .shadow(radius: 2, x: 2.2, y: 2.2)
                 
                 Button {
-                    
+                    viewModel.showDatePicker.toggle()
                 } label: {
-                    Image(systemName: viewModel.time.isEmpty ? "clock" : "calendar.badge.clock")
-                        .foregroundStyle(.black)
-                    Text(viewModel.time.isEmpty ? "Jetzt" : viewModel.time)
-                        .foregroundStyle(.black)
-                        .padding(.trailing,70)
+                    if viewModel.time != currentTime {
+                        Image(systemName: "calendar.badge.clock")
+                            .foregroundStyle(.black)
+                        Text(viewModel.formatDate(viewModel.time))
+                            .foregroundStyle(.black)
+                    } else {
+                        Image(systemName: "clock")
+                            .foregroundStyle(.black)
+                        Text("Jetzt")
+                            .foregroundStyle(.black)
+                            .padding(.trailing,70)
+                    }
                 }
                 .padding(10)
-                .frame(width: 178)
+                .frame(width: 175)
                 .background(.lightGray)
                 .foregroundColor(.white)
                 .clipShape(RoundedRectangle(cornerRadius: 10))
+                .shadow(radius: 2, x: 2.2, y: 2.2)
                 
+            }
+            .sheet(isPresented: $viewModel.showDatePicker) {
+                TimePickerSheet()
+                    .presentationDetents([.medium, .large])
+            }
+        }
+        .onAppear {
+            // Aktuelle Zeit setzen
+            if viewModel.time != currentTime {
+                viewModel.time = currentTime
             }
         }
     }
 }
 
+
+
 #Preview {
     SettingsCallTaxiView()
+        .environmentObject(CallTaxiViewModel())
 }

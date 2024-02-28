@@ -17,6 +17,11 @@ struct ContentView: View {
                     Image(systemName: "car")
                 }
                 .environmentObject(viewModel)
+            
+            ChatView()
+                .tabItem {
+                    Image(systemName: "books.vertical")
+                }
         }
     }
 }

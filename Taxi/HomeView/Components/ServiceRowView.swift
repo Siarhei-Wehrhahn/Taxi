@@ -8,89 +8,22 @@
 import SwiftUI
 
 struct ServiceRowView: View {
+    @EnvironmentObject var viewModel: CallTaxiViewModel
+    // stoke mit lineargradient
     var body: some View {
-        ScrollView(.horizontal) {
-            HStack {
-                Button {
-                    
-                } label: {
-                    VStack {
-                        Image(.taxi)
-                            .resizable()
-                            .frame(width: 55, height: 55)
-                        Text("Normales Taxi")
-                            .foregroundStyle(.black)
-                        Text("Ab 3,50€")
-                            .font(Font.system(size: 12))
-                            .foregroundStyle(.black)
-                            .opacity(0.4)
-                    }
+            ScrollView(.horizontal) {
+                HStack {
+                    viewModel.serviceButton(label: "Normales Taxi", imageName: "taxi", buttonType: "taxi", price: "4,00")
+                    viewModel.serviceButton(label: "Großraum Taxi", imageName: "bigTaxi", buttonType: "bigTaxi", price: "5,00")
+                    viewModel.serviceButton(label: "Lieferfahrt", imageName: "delivery", buttonType: "delivery", price: "5,00")
+                    viewModel.serviceButton(label: "ServiceFahrt", imageName: "service", buttonType: "service", price: "5,00")
                 }
-                .padding()
-                .background(.lightGray)
-                .clipShape(RoundedRectangle(cornerRadius: 25))
-                
-                Button {
-                    
-                } label: {
-                    VStack {
-                        Image(.bigTaxi)
-                            .resizable()
-                            .frame(width: 55, height: 55)
-                        Text("Großraum Taxi")
-                            .foregroundStyle(.black)
-                        Text("Ab 5€")
-                            .font(Font.system(size: 12))
-                            .foregroundStyle(.black)
-                            .opacity(0.4)
-                    }
-                }
-                .padding()
-                .background(.lightGray)
-                .clipShape(RoundedRectangle(cornerRadius: 25))
-                
-                Button {
-                    
-                } label: {
-                    VStack {
-                        Image(.delivery)
-                            .resizable()
-                            .frame(width: 55, height: 55)
-                        Text("Lieferfahrt")
-                            .foregroundStyle(.black)
-                        Text("Ab 5€")
-                            .font(Font.system(size: 12))
-                            .foregroundStyle(.black)
-                            .opacity(0.4)
-                    }
-                }
-                .padding()
-                .background(.lightGray)
-                .clipShape(RoundedRectangle(cornerRadius: 25))
-                
-                Button {
-                    
-                } label: {
-                    VStack {
-                        Image(.service)
-                            .resizable()
-                            .frame(width: 55, height: 55)
-                        Text("ServiceFahrt")
-                            .foregroundStyle(.black)
-                        Text("Ab 5€")
-                            .font(Font.system(size: 12))
-                            .foregroundStyle(.black)
-                            .opacity(0.4)
-                    }
-                }
-                .padding()
-                .background(.lightGray)
-                .clipShape(RoundedRectangle(cornerRadius: 25))
+                .frame(width: 555,height: 150)
             }
         }
     }
-}
 
 #Preview {
     ServiceRowView()
+        .environmentObject(CallTaxiViewModel())
 }

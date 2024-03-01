@@ -26,6 +26,9 @@
 		816F94472B895B6E00F231E9 /* HeaderCallTaxiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 816F94462B895B6E00F231E9 /* HeaderCallTaxiView.swift */; };
 		816F94492B895BC600F231E9 /* SettingsCallTaxiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 816F94482B895BC600F231E9 /* SettingsCallTaxiView.swift */; };
 		816F944B2B895E1D00F231E9 /* CallTaxiViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 816F944A2B895E1D00F231E9 /* CallTaxiViewModel.swift */; };
+		8183B9D42B908794003896C9 /* ChatRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8183B9D32B908794003896C9 /* ChatRequest.swift */; };
+		8183B9D72B908959003896C9 /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8183B9D62B908959003896C9 /* ChatViewModel.swift */; };
+		8183B9DA2B908987003896C9 /* ChatRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8183B9D92B908987003896C9 /* ChatRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +71,9 @@
 		816F94462B895B6E00F231E9 /* HeaderCallTaxiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCallTaxiView.swift; sourceTree = "<group>"; };
 		816F94482B895BC600F231E9 /* SettingsCallTaxiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCallTaxiView.swift; sourceTree = "<group>"; };
 		816F944A2B895E1D00F231E9 /* CallTaxiViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallTaxiViewModel.swift; sourceTree = "<group>"; };
+		8183B9D32B908794003896C9 /* ChatRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRequest.swift; sourceTree = "<group>"; };
+		8183B9D62B908959003896C9 /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
+		8183B9D92B908987003896C9 /* ChatRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +155,8 @@
 		8160A7A82B87EC0300418E20 /* Taxi */ = {
 			isa = PBXGroup;
 			children = (
+				8183B9D52B908948003896C9 /* ViewModel */,
+				8183B9CF2B90842F003896C9 /* Api */,
 				813447E92B8CE16F00B3D82D /* StartViews */,
 				8160A7D82B87FC6C00418E20 /* Utils */,
 				8160A7D32B87EC1F00418E20 /* HomeView */,
@@ -190,7 +198,6 @@
 				813447E02B8CAEF800B3D82D /* Components */,
 				8160A7D42B87EC4600418E20 /* CallTaxiView.swift */,
 				8160A7D62B87FA1A00418E20 /* CallTaxiDetailSheetView.swift */,
-				816F944A2B895E1D00F231E9 /* CallTaxiViewModel.swift */,
 			);
 			path = HomeView;
 			sourceTree = "<group>";
@@ -201,6 +208,40 @@
 				8160A7D92B87FC9E00418E20 /* PickerView.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		8183B9CF2B90842F003896C9 /* Api */ = {
+			isa = PBXGroup;
+			children = (
+				8183B9D82B908979003896C9 /* Repository */,
+				8183B9D22B908789003896C9 /* Model */,
+			);
+			path = Api;
+			sourceTree = "<group>";
+		};
+		8183B9D22B908789003896C9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8183B9D32B908794003896C9 /* ChatRequest.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		8183B9D52B908948003896C9 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				816F944A2B895E1D00F231E9 /* CallTaxiViewModel.swift */,
+				8183B9D62B908959003896C9 /* ChatViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		8183B9D82B908979003896C9 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				8183B9D92B908987003896C9 /* ChatRepository.swift */,
+			);
+			path = Repository;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -334,15 +375,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				8160A7D52B87EC4600418E20 /* CallTaxiView.swift in Sources */,
+				8183B9DA2B908987003896C9 /* ChatRepository.swift in Sources */,
 				816F94492B895BC600F231E9 /* SettingsCallTaxiView.swift in Sources */,
 				816F94472B895B6E00F231E9 /* HeaderCallTaxiView.swift in Sources */,
 				813447E82B8CDE8C00B3D82D /* ViewRouter.swift in Sources */,
 				813447E22B8CB6B700B3D82D /* ChatView.swift in Sources */,
+				8183B9D72B908959003896C9 /* ChatViewModel.swift in Sources */,
 				816F944B2B895E1D00F231E9 /* CallTaxiViewModel.swift in Sources */,
 				813447E62B8CDA4300B3D82D /* SplashView.swift in Sources */,
 				816D22FF2B8DEADB006EABDF /* MapView.swift in Sources */,
 				8160A7AC2B87EC0300418E20 /* ContentView.swift in Sources */,
 				8160A7AA2B87EC0300418E20 /* Taxi_App.swift in Sources */,
+				8183B9D42B908794003896C9 /* ChatRequest.swift in Sources */,
 				8160A7D72B87FA1A00418E20 /* CallTaxiDetailSheetView.swift in Sources */,
 				8160A7DA2B87FC9E00418E20 /* PickerView.swift in Sources */,
 				813447E42B8CCCF400B3D82D /* TimePickerSheet.swift in Sources */,
@@ -510,6 +554,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Taxi/Preview Content\"";
+				DEVELOPMENT_TEAM = LFNM38DQ8M;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "Taxi ";
@@ -539,6 +584,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Taxi/Preview Content\"";
+				DEVELOPMENT_TEAM = LFNM38DQ8M;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "Taxi ";

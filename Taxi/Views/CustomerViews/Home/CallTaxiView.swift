@@ -61,6 +61,7 @@ struct CallTaxiView: View {
                 }
             }
         }
+        .navigationBarBackButtonHidden(true)
     }
 }
 

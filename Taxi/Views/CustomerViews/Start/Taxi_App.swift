@@ -16,6 +16,7 @@ struct Taxi_App: App {
             NavigationView {
                 if viewRouter.currentPage == .splash {
                     SplashView()
+                        .preferredColorScheme(.light) // Deaktiviere den Dark Mode
                         .onAppear {
                             // Nach 2 sek den viewRouter auf HomeView setzen
                             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
@@ -26,6 +27,7 @@ struct Taxi_App: App {
                         }
                 } else if viewRouter.currentPage == .home {
                     ContentView()
+                        .preferredColorScheme(.light) 
                 }
             }
         }

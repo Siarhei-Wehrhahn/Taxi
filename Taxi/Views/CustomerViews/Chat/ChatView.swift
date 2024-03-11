@@ -9,8 +9,7 @@ import SwiftUI
 
 struct ChatView: View {
     @StateObject var viewModel = ChatViewModel()
-    @State private var messageText = ""
-
+    
     var body: some View {
         ZStack {
             // Hintergrund
@@ -18,22 +17,25 @@ struct ChatView: View {
                 .foregroundStyle(.white)
                 .edgesIgnoringSafeArea(.all)
             
-            // Hintergrundbild
-//            Image("chatBg")
-//                .resizable()
-//                .scaledToFill()
-//                .padding(.bottom, 50)
-            
             // Grauer Balken am unteren Rand
             Rectangle()
                 .foregroundStyle(.lightGray)
-                .padding(.top, 630)
+                .padding(.top, 610)
                 .edgesIgnoringSafeArea(.bottom)
             
             VStack {
-                // Nachrichtenliste
-                List(viewModel.messages, id: \.self) { message in
-                    Text("\(message)")
+                List {
+                    ForEach(viewModel.messages.indices, id: \.self) { index in
+                        if index < viewModel.userMessages.count {
+                            Text("Du \n\(viewModel.userMessages[index])")
+                            Text("ChatGPT \n\(viewModel.messages[index])")
+                                .foregroundStyle(.blue)
+                        } else {
+                            Text("ChatGPT \n\(viewModel.messages[index])")
+                            Text("Du \n\(viewModel.userMessages[index])")
+                                .foregroundStyle(.blue)
+                        }
+                    }
                 }
                 .padding(.top, 20)
                 
@@ -47,7 +49,7 @@ struct ChatView: View {
                         .padding(.trailing, 10)
                     
                     Button {
-                        sendMessage()
+                        viewModel.sendMessage()
                     } label: {
                         Image(systemName: "paperplane.fill")
                             .font(Font.system(size: 25))
@@ -57,10 +59,6 @@ struct ChatView: View {
                 .padding(.bottom, 30)
             }
         }
-    }
-
-    private func sendMessage() {
-        viewModel.sendMessage(text: messageText)
     }
 }
 

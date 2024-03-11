@@ -8,15 +8,19 @@
 import Foundation
 
 class ChatRepository: ObservableObject {
-    @Published var answere: [String] = []
     
-    func sendRequest(prompt: String, completion: @escaping (Result<String, Error>) -> Void) {
-        
+    enum RequestError: Error {
+        case unknownError
+        case encodingError
+        case decodingError
+    }
+
+    func sendRequest(prompt: String) async throws -> String {
         // Die URL zur API
         let apiUrl = URL(string: "https://api.openai.com/v1/chat/completions")!
         
         // Dein API-Schlüssel
-        let apiKey = "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"
+        let apiKey = "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"
         
         // Die Daten für die Chat-Anfrage
         let requestData: [String: Any] = [
@@ -40,28 +44,22 @@ class ChatRepository: ObservableObject {
             let jsonData = try JSONSerialization.data(withJSONObject: requestData, options: [])
             urlRequest.httpBody = jsonData
         } catch {
-            print("Error encoding request data: \(error)")
+            throw RequestError.encodingError
         }
         
         // Die Anfrage senden
-        let task = URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
-            guard let data = data, error == nil else {
-                print("Error: \(error?.localizedDescription ?? "Unknown error")")
-                return
-            }
+        let (data, _) = try await URLSession.shared.data(for: urlRequest)
+        
+        // Die Antwort decodieren
+        do {
+            let decoder = JSONDecoder()
+            let response = try decoder.decode(ChatResponse.self, from: data)
             
-            // Die Antwort decodieren
-            do {
-                let decoder = JSONDecoder()
-                let response = try decoder.decode(ChatResponse.self, from: data)
-                
-                // Die Antwort verarbeiten
-                self.answere.append(response.choices.first?.message.content ?? "No response")
-                print(self.answere)
-            } catch {
-                print("Error decoding response: \(error)")
-            }
+            // Die Antwort verarbeiten
+            let answer = response.choices.first?.message.content ?? "No response"
+            return answer
+        } catch {
+            throw RequestError.decodingError
         }
-        task.resume()
     }
 }

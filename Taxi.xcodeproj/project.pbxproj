@@ -7,10 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		810353292B9DCD1000520EE0 /* FavoriteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810353282B9DCD1000520EE0 /* FavoriteViewModel.swift */; };
+		8103532C2B9DD3A900520EE0 /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8103532B2B9DD3A900520EE0 /* Trip.swift */; };
+		810353302B9F171700520EE0 /* OrdersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8103532F2B9F171700520EE0 /* OrdersView.swift */; };
 		813447E22B8CB6B700B3D82D /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813447E12B8CB6B700B3D82D /* ChatView.swift */; };
 		813447E42B8CCCF400B3D82D /* TimePickerSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813447E32B8CCCF400B3D82D /* TimePickerSheet.swift */; };
 		813447E62B8CDA4300B3D82D /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813447E52B8CDA4300B3D82D /* SplashView.swift */; };
 		813447E82B8CDE8C00B3D82D /* ViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813447E72B8CDE8C00B3D82D /* ViewRouter.swift */; };
+		814A11612B99DA0200BF9F0A /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814A11602B99DA0200BF9F0A /* SettingsView.swift */; };
+		814A11632B9DA82800BF9F0A /* FavoriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814A11622B9DA82800BF9F0A /* FavoriteView.swift */; };
+		814A11662B9DAC0800BF9F0A /* FavoriteViewSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814A11652B9DAC0800BF9F0A /* FavoriteViewSheet.swift */; };
 		8160A7AA2B87EC0300418E20 /* Taxi_App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8160A7A92B87EC0300418E20 /* Taxi_App.swift */; };
 		8160A7AC2B87EC0300418E20 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8160A7AB2B87EC0300418E20 /* ContentView.swift */; };
 		8160A7AE2B87EC0500418E20 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8160A7AD2B87EC0500418E20 /* Assets.xcassets */; };
@@ -49,10 +55,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		810353282B9DCD1000520EE0 /* FavoriteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewModel.swift; sourceTree = "<group>"; };
+		8103532B2B9DD3A900520EE0 /* Trip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
+		8103532F2B9F171700520EE0 /* OrdersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersView.swift; sourceTree = "<group>"; };
 		813447E12B8CB6B700B3D82D /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 		813447E32B8CCCF400B3D82D /* TimePickerSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePickerSheet.swift; sourceTree = "<group>"; };
 		813447E52B8CDA4300B3D82D /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		813447E72B8CDE8C00B3D82D /* ViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRouter.swift; sourceTree = "<group>"; };
+		814A11602B99DA0200BF9F0A /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		814A11622B9DA82800BF9F0A /* FavoriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteView.swift; sourceTree = "<group>"; };
+		814A11652B9DAC0800BF9F0A /* FavoriteViewSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewSheet.swift; sourceTree = "<group>"; };
 		8160A7A62B87EC0300418E20 /* Taxi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Taxi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8160A7A92B87EC0300418E20 /* Taxi_App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Taxi_App.swift; sourceTree = "<group>"; };
 		8160A7AB2B87EC0300418E20 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -101,6 +113,59 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		810353252B9DCCB400520EE0 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				813447E12B8CB6B700B3D82D /* ChatView.swift */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
+		810353262B9DCCCA00520EE0 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				816F944A2B895E1D00F231E9 /* CallTaxiViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		810353272B9DCCF900520EE0 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				810353282B9DCD1000520EE0 /* FavoriteViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		8103532A2B9DD39F00520EE0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8183B9D62B908959003896C9 /* ChatViewModel.swift */,
+				8103532B2B9DD3A900520EE0 /* Trip.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		8103532D2B9F152A00520EE0 /* CustomerViews */ = {
+			isa = PBXGroup;
+			children = (
+				810353252B9DCCB400520EE0 /* Chat */,
+				814A11642B9DABD800BF9F0A /* Favorite */,
+				8160A7D32B87EC1F00418E20 /* Home */,
+				813447E92B8CE16F00B3D82D /* Start */,
+				814A11602B99DA0200BF9F0A /* SettingsView.swift */,
+			);
+			path = CustomerViews;
+			sourceTree = "<group>";
+		};
+		8103532E2B9F16D500520EE0 /* EmployeeViews */ = {
+			isa = PBXGroup;
+			children = (
+				8103532F2B9F171700520EE0 /* OrdersView.swift */,
+			);
+			path = EmployeeViews;
+			sourceTree = "<group>";
+		};
 		813447E02B8CAEF800B3D82D /* Components */ = {
 			isa = PBXGroup;
 			children = (
@@ -113,7 +178,7 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
-		813447E92B8CE16F00B3D82D /* StartViews */ = {
+		813447E92B8CE16F00B3D82D /* Start */ = {
 			isa = PBXGroup;
 			children = (
 				813447EA2B8CE19C00B3D82D /* ViewRouter */,
@@ -121,7 +186,7 @@
 				813447E52B8CDA4300B3D82D /* SplashView.swift */,
 				8160A7AB2B87EC0300418E20 /* ContentView.swift */,
 			);
-			path = StartViews;
+			path = Start;
 			sourceTree = "<group>";
 		};
 		813447EA2B8CE19C00B3D82D /* ViewRouter */ = {
@@ -130,6 +195,17 @@
 				813447E72B8CDE8C00B3D82D /* ViewRouter.swift */,
 			);
 			path = ViewRouter;
+			sourceTree = "<group>";
+		};
+		814A11642B9DABD800BF9F0A /* Favorite */ = {
+			isa = PBXGroup;
+			children = (
+				8103532A2B9DD39F00520EE0 /* Model */,
+				810353272B9DCCF900520EE0 /* ViewModel */,
+				814A11622B9DA82800BF9F0A /* FavoriteView.swift */,
+				814A11652B9DAC0800BF9F0A /* FavoriteViewSheet.swift */,
+			);
+			path = Favorite;
 			sourceTree = "<group>";
 		};
 		8160A79D2B87EC0300418E20 = {
@@ -155,12 +231,9 @@
 		8160A7A82B87EC0300418E20 /* Taxi */ = {
 			isa = PBXGroup;
 			children = (
-				8183B9D52B908948003896C9 /* ViewModel */,
 				8183B9CF2B90842F003896C9 /* Api */,
-				813447E92B8CE16F00B3D82D /* StartViews */,
 				8160A7D82B87FC6C00418E20 /* Utils */,
-				8160A7D32B87EC1F00418E20 /* HomeView */,
-				813447E12B8CB6B700B3D82D /* ChatView.swift */,
+				8183B9DB2B9202CA003896C9 /* Views */,
 				8160A7AD2B87EC0500418E20 /* Assets.xcassets */,
 				8160A7AF2B87EC0500418E20 /* Preview Content */,
 			);
@@ -192,14 +265,15 @@
 			path = TaxiUITests;
 			sourceTree = "<group>";
 		};
-		8160A7D32B87EC1F00418E20 /* HomeView */ = {
+		8160A7D32B87EC1F00418E20 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				810353262B9DCCCA00520EE0 /* ViewModel */,
 				813447E02B8CAEF800B3D82D /* Components */,
 				8160A7D42B87EC4600418E20 /* CallTaxiView.swift */,
 				8160A7D62B87FA1A00418E20 /* CallTaxiDetailSheetView.swift */,
 			);
-			path = HomeView;
+			path = Home;
 			sourceTree = "<group>";
 		};
 		8160A7D82B87FC6C00418E20 /* Utils */ = {
@@ -227,21 +301,21 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		8183B9D52B908948003896C9 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				816F944A2B895E1D00F231E9 /* CallTaxiViewModel.swift */,
-				8183B9D62B908959003896C9 /* ChatViewModel.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
 		8183B9D82B908979003896C9 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
 				8183B9D92B908987003896C9 /* ChatRepository.swift */,
 			);
 			path = Repository;
+			sourceTree = "<group>";
+		};
+		8183B9DB2B9202CA003896C9 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8103532E2B9F16D500520EE0 /* EmployeeViews */,
+				8103532D2B9F152A00520EE0 /* CustomerViews */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -374,11 +448,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8103532C2B9DD3A900520EE0 /* Trip.swift in Sources */,
 				8160A7D52B87EC4600418E20 /* CallTaxiView.swift in Sources */,
 				8183B9DA2B908987003896C9 /* ChatRepository.swift in Sources */,
 				816F94492B895BC600F231E9 /* SettingsCallTaxiView.swift in Sources */,
+				814A11612B99DA0200BF9F0A /* SettingsView.swift in Sources */,
 				816F94472B895B6E00F231E9 /* HeaderCallTaxiView.swift in Sources */,
 				813447E82B8CDE8C00B3D82D /* ViewRouter.swift in Sources */,
+				810353292B9DCD1000520EE0 /* FavoriteViewModel.swift in Sources */,
 				813447E22B8CB6B700B3D82D /* ChatView.swift in Sources */,
 				8183B9D72B908959003896C9 /* ChatViewModel.swift in Sources */,
 				816F944B2B895E1D00F231E9 /* CallTaxiViewModel.swift in Sources */,
@@ -390,6 +467,9 @@
 				8160A7D72B87FA1A00418E20 /* CallTaxiDetailSheetView.swift in Sources */,
 				8160A7DA2B87FC9E00418E20 /* PickerView.swift in Sources */,
 				813447E42B8CCCF400B3D82D /* TimePickerSheet.swift in Sources */,
+				814A11632B9DA82800BF9F0A /* FavoriteView.swift in Sources */,
+				814A11662B9DAC0800BF9F0A /* FavoriteViewSheet.swift in Sources */,
+				810353302B9F171700520EE0 /* OrdersView.swift in Sources */,
 				816F94452B894FAD00F231E9 /* ServiceRowView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

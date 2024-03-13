@@ -32,6 +32,16 @@ struct FavoriteView: View {
                             }
                         }
                     }
+                    .swipeActions {
+                        Button(role: .destructive) {
+                            // Hier löschen wir den Trip aus der listOfTrips
+                            if let index = favoriteViewModel.listOfTrips.firstIndex(of: trip) {
+                                favoriteViewModel.listOfTrips.remove(at: index)
+                            }
+                        } label: {
+                            Label("Löschen", systemImage: "trash")
+                        }
+                    }
                 }
             }
             .navigationTitle("Favoriten")
@@ -40,6 +50,11 @@ struct FavoriteView: View {
                 showSheet.toggle()
             } label: {
                 Image(systemName: "plus")
+            })
+            .navigationBarItems(trailing: Button {
+                favoriteViewModel.deleteAll()
+            } label: {
+                Image(systemName: "trash")
             })
         }
         .sheet(isPresented: $showSheet, content: {

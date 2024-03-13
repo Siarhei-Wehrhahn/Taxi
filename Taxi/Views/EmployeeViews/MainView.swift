@@ -8,8 +8,29 @@
 import SwiftUI
 
 struct MainView: View {
+    @State private var isOrdersView = false
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+            TabView {
+                
+                OrdersView()
+                    .onAppear {
+                        isOrdersView = true
+                    }
+                    .tabItem {
+                        Image(systemName: isOrdersView ? "book" : "book.closed")
+                        Text("Aufträge")
+                    }
+                
+                HistoryView()
+                    .onAppear {
+                        isOrdersView = false
+                    }
+                    .tabItem {
+                        Image(systemName: "clock.arrow.circlepath")
+                        Text("Verlauf")
+                    }
+        }
     }
 }
 

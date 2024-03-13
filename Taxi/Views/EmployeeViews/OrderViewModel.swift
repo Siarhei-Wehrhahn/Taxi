@@ -6,3 +6,10 @@
 //
 
 import Foundation
+
+class OrderViewModel: ObservableObject {
+    @Published var orders: [OrderModel] = []
+}
+
+// TODO die verbindung zwischen bei den viewModels herstellen und mit einer func die liste befüllen
+// dabei sollen alle atribute ausgefüllt werden die gesucht werden 

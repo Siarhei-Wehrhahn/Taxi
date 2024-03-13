@@ -9,7 +9,11 @@ import SwiftUI
 
 struct HistoryView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            
+        }
+        // Eine liste mahcen mit dem aus dem viewModel bereit gestellten daten
+        // Sobald abgelehnt wird soll die fart für einen fahrer nicht mwhr sichtbar sein und wenn er angenommen wird für alle anderen unsichtbar
     }
 }
 

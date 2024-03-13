@@ -6,3 +6,10 @@
 //
 
 import Foundation
+
+struct FireUser: Codable {
+    let id: String
+    let nickName: String
+    let email: String
+    let registeredAt: Date
+}

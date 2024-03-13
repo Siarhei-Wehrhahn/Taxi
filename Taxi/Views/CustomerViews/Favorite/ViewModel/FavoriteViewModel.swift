@@ -12,7 +12,8 @@ class FavoriteViewModel: ObservableObject {
     @Published var listOfTrips: [Trip] = []
     
     func addTrip() {
-        listOfTrips.append(trip)
+        let newTrip = Trip(start: trip.start, destination: trip.destination)
+        listOfTrips.append(newTrip)
     }
     
     func deleteAll() {

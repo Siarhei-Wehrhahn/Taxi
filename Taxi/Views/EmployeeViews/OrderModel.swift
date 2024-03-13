@@ -6,3 +6,12 @@
 //
 
 import Foundation
+
+struct OrderModel {
+    let kids: Bool
+    let countOfKids: Int
+    let laguage: Bool
+    let pets: Bool
+    let helpToSitIn: Bool
+    let people: Int
+}

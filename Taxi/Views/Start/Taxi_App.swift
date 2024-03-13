@@ -6,14 +6,21 @@
 //
 
 import SwiftUI
+import Firebase
 
 @main
 struct Taxi_App: App {
     @StateObject private var viewRouter = ViewRouter()
+    @StateObject var authenticationViewModel = AuthenticationViewModel()
+    
+    init() {
+        FirebaseConfiguration.shared.setLoggerLevel(.min)
+        FirebaseApp.configure()
+    }
     
     var body: some Scene {
         WindowGroup {
-            NavigationView {
+            NavigationStack {
                 if viewRouter.currentPage == .splash {
                     SplashView()
                         .preferredColorScheme(.light) // Deaktiviere den Dark Mode
@@ -25,9 +32,13 @@ struct Taxi_App: App {
                                 }
                             }
                         }
-                } else if viewRouter.currentPage == .home {
+                } else if authenticationViewModel.userIsLoggedIn {
                     ContentView()
-                        .preferredColorScheme(.light) 
+                        .environmentObject(authenticationViewModel)
+                } else {
+                    LoginView()
+                        .environmentObject(authenticationViewModel)
+                        .preferredColorScheme(.light)
                 }
             }
         }

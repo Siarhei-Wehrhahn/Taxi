@@ -7,12 +7,8 @@
 
 import Foundation
 
-class Trip: ObservableObject, Identifiable {
-    @Published var start: String
-    @Published var destination: String
-    
-    init(start: String, destination: String) {
-        self.start = start
-        self.destination = destination
-    }
+struct Trip: Identifiable, Hashable {
+    var id = UUID()
+    var start: String
+    var destination: String
 }

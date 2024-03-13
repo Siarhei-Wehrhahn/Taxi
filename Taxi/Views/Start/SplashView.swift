@@ -16,6 +16,13 @@ struct SplashView: View {
             
             Text("Taxi Taxi")
                 .font(Font.system(size: 40))
+                .foregroundStyle(.black)
+                .shadow(radius: 5)
+                .padding(.top, 2)
+                .padding(.leading, 2)
+            
+            Text("Taxi Taxi")
+                .font(Font.system(size: 40))
                 .foregroundStyle(.yellow)
                 .shadow(radius: 5)
             

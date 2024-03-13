@@ -31,7 +31,7 @@ class CallTaxiViewModel: ObservableObject {
     private var subscriptions = Set<AnyCancellable>()
     
     init() {
-        $start.debounce(for: .seconds(3), scheduler: DispatchQueue.main)
+        $start.debounce(for: .seconds(2), scheduler: DispatchQueue.main)
             .sink(receiveValue: { [weak self] t in
                 self?.geocodeAddress(address: t, completion: {coordinate in
                     self?.startCoordinate = coordinate
@@ -39,7 +39,7 @@ class CallTaxiViewModel: ObservableObject {
             } )
             .store(in: &subscriptions)
         
-        $destination.debounce(for: .seconds(3), scheduler: DispatchQueue.main)
+        $destination.debounce(for: .seconds(2), scheduler: DispatchQueue.main)
             .sink(receiveValue: { [weak self] t in
                 self?.geocodeAddress(address: t, completion: {coordinate in
                     self?.endCoordinate = coordinate

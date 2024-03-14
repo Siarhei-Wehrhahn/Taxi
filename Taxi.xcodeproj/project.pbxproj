@@ -42,6 +42,8 @@
 		8183B9D42B908794003896C9 /* ChatRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8183B9D32B908794003896C9 /* ChatRequest.swift */; };
 		8183B9D72B908959003896C9 /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8183B9D62B908959003896C9 /* ChatViewModel.swift */; };
 		8183B9DA2B908987003896C9 /* ChatRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8183B9D92B908987003896C9 /* ChatRepository.swift */; };
+		819128262BA32BC700AC1373 /* RegisterOrLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819128252BA32BC700AC1373 /* RegisterOrLogin.swift */; };
+		8191282B2BA3450900AC1373 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8191282A2BA3450900AC1373 /* Order.swift */; };
 		819C10B22BA0594D0066E79E /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819C10B12BA0594D0066E79E /* LoginView.swift */; };
 		819C10EF2BA07D100066E79E /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819C10EE2BA07D100066E79E /* AuthenticationViewModel.swift */; };
 		819C10F22BA07F860066E79E /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 819C10F12BA07F860066E79E /* FirebaseAnalytics */; };
@@ -131,6 +133,8 @@
 		8183B9D32B908794003896C9 /* ChatRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRequest.swift; sourceTree = "<group>"; };
 		8183B9D62B908959003896C9 /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
 		8183B9D92B908987003896C9 /* ChatRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRepository.swift; sourceTree = "<group>"; };
+		819128252BA32BC700AC1373 /* RegisterOrLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterOrLogin.swift; sourceTree = "<group>"; };
+		8191282A2BA3450900AC1373 /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 		819C10B12BA0594D0066E79E /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		819C10EE2BA07D100066E79E /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
 		819C10FC2BA080710066E79E /* FireBaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBaseManager.swift; sourceTree = "<group>"; };
@@ -398,17 +402,26 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		819128242BA32BAC00AC1373 /* RegisterOrLogin */ = {
+			isa = PBXGroup;
+			children = (
+				819C10B12BA0594D0066E79E /* LoginView.swift */,
+				81545D8F2BA1B61900285011 /* AuthenticationView.swift */,
+				819128252BA32BC700AC1373 /* RegisterOrLogin.swift */,
+			);
+			path = RegisterOrLogin;
+			sourceTree = "<group>";
+		};
 		819C10B02BA0592D0066E79E /* Start */ = {
 			isa = PBXGroup;
 			children = (
+				819128242BA32BAC00AC1373 /* RegisterOrLogin */,
 				819C112A2BA084850066E79E /* Model */,
 				819C10FB2BA0805B0066E79E /* FireBase */,
 				819C10ED2BA07D020066E79E /* ViewModel */,
 				813447EA2B8CE19C00B3D82D /* ViewRouter */,
 				8160A7A92B87EC0300418E20 /* Taxi_App.swift */,
 				813447E52B8CDA4300B3D82D /* SplashView.swift */,
-				819C10B12BA0594D0066E79E /* LoginView.swift */,
-				81545D8F2BA1B61900285011 /* AuthenticationView.swift */,
 				81545D932BA1C3DC00285011 /* GoogleService-Info.plist */,
 			);
 			path = Start;
@@ -441,6 +454,7 @@
 			isa = PBXGroup;
 			children = (
 				819C112B2BA084960066E79E /* FireUser.swift */,
+				8191282A2BA3450900AC1373 /* Order.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -635,12 +649,14 @@
 				8160A7DA2B87FC9E00418E20 /* PickerView.swift in Sources */,
 				813447E42B8CCCF400B3D82D /* TimePickerSheet.swift in Sources */,
 				819C10B22BA0594D0066E79E /* LoginView.swift in Sources */,
+				8191282B2BA3450900AC1373 /* Order.swift in Sources */,
 				819C112C2BA084960066E79E /* FireUser.swift in Sources */,
 				814A11632B9DA82800BF9F0A /* FavoriteView.swift in Sources */,
 				814A11662B9DAC0800BF9F0A /* FavoriteViewSheet.swift in Sources */,
 				8103533C2B9F229900520EE0 /* OrderViewModel.swift in Sources */,
 				810353302B9F171700520EE0 /* OrdersView.swift in Sources */,
 				816F94452B894FAD00F231E9 /* ServiceRowView.swift in Sources */,
+				819128262BA32BC700AC1373 /* RegisterOrLogin.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

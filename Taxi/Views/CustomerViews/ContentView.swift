@@ -6,52 +6,61 @@
 //
 
 import SwiftUI
-
 struct ContentView: View {
     @StateObject private var callTaxiViewModel = CallTaxiViewModel()
-    @StateObject private var favoriteViewmodel = FavoriteViewModel()
+    @StateObject private var favoriteViewModel = FavoriteViewModel()
     @State var selection = 0
-    
     var body: some View {
-        TabView(selection: $selection) {
-            CallTaxiView()
-                .tabItem {
-                    Image(systemName: "car")
-                    
-                    Text("Bestellung")
+        NavigationStack {
+            TabView(selection: $selection) {
+                CallTaxiView()
+                    .tabItem {
+                        Image(systemName: "car")
+                        Text("Bestellung")
+                    }
+                    .environmentObject(callTaxiViewModel)
+                    .tag(0)
+                ChatView()
+                    .tabItem {
+                        Image(systemName: "bubble.left.and.bubble.right")
+                        Text("ChatGPT")
+                    }
+                    .tag(1)
+                FavoriteView(selection: $selection)
+                    .tabItem {
+                        Image(systemName: "heart")
+                        Text("Favoriten")
+                    }
+                    .environmentObject(favoriteViewModel)
+                    .environmentObject(callTaxiViewModel)
+                    .tag(2)
+                
+                SettingsView()
+                    .tabItem {
+                        Image(systemName: "gear")
+                        Text("Einstellungen")
+                    }
+                    .tag(3)
+            }
+            .navigationBarItems(trailing: Group {
+                if selection == 2 {
+                    HStack {
+                        Button {
+                            favoriteViewModel.showSheet.toggle()
+                        } label: {
+                            Image(systemName: "plus")
+                        }
+                        Button {
+                            favoriteViewModel.deleteAll()
+                        } label: {
+                            Image(systemName: "trash")
+                        }
+                    }
                 }
-                .environmentObject(callTaxiViewModel)
-                .tag(0)
-            
-            ChatView()
-                .tabItem {
-                    Image(systemName: "bubble.left.and.bubble.right")
-                    
-                    Text("ChatGPT")
-                }
-                .tag(1)
-            
-            FavoriteView(selection: $selection)
-                .tabItem {
-                    Image(systemName: "heart")
-                    
-                    Text("Favoriten")
-                }
-                .environmentObject(favoriteViewmodel)
-                .environmentObject(callTaxiViewModel)
-                .tag(2)
-            
-            SettingsView()
-                .tabItem {
-                    Image(systemName: "gear")
-                    
-                    Text("Einstellungen")
-                }
-                .tag(3)
+            })
         }
     }
 }
-
 #Preview {
     ContentView()
         .environmentObject(AuthenticationViewModel())

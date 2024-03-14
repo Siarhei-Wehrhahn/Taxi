@@ -13,6 +13,11 @@ class AuthenticationViewModel: ObservableObject {
     @Published var name: String = ""
     @Published var email: String = ""
     @Published var password: String = ""
+    @Published var showAlert = false
+    @Published var showPasswordAlert = false
+    @Published var showEmailAlert = false
+    @Published var showNickName = false
+    @Published var showRegister = false
     
     var userIsLoggedIn: Bool {
         self.user != nil
@@ -20,6 +25,22 @@ class AuthenticationViewModel: ObservableObject {
     
     init() {
         self.checkLogin()
+    }
+    
+    func loginAnonym() {
+        FirebaseManager.shared.authenticator.signInAnonymously { authResult, error in
+            if let user = self.handleAuthResult(authResult: authResult, error: error) {
+                self.fetchFireUser(id: user.uid)
+            }
+        }
+    }
+    
+    func createAnonym() {
+        FirebaseManager.shared.authenticator.signInAnonymously { authResult, error in
+            if let user = self.handleAuthResult(authResult: authResult, error: error) {
+                self.createFireUser(id: user.uid, email: "", name: "Anonym")
+            }
+        }
     }
     
     func login() {
@@ -58,13 +79,14 @@ class AuthenticationViewModel: ObservableObject {
     
     private func handleAuthResult(authResult: AuthDataResult?, error: Error?) -> User? {
         if let error {
-            // TODO Alert bei gleicher email
+            showAlert = true
             print("Error signing in : \(error)")
             return nil
         }
         
         guard let authResult else {
             print("auth result is empty!")
+            
             return nil
         }
         
@@ -72,7 +94,7 @@ class AuthenticationViewModel: ObservableObject {
     }
     
     private func createFireUser(id: String, email: String, name: String) {
-        let fireUser = FireUser(id: id, nickName: name, email: email, registeredAt: Date())
+        let fireUser = FireUser(id: id, nickName: name, email: email, registeredAt: Date(), driver: false)
         
         do {
             try FirebaseManager.shared.fireStore.collection("user").document(id).setData(from: fireUser)
@@ -102,11 +124,5 @@ class AuthenticationViewModel: ObservableObject {
             }
         }
     }
-    
-    func isValidEmail() -> Bool {
-            let emailRegEx = "[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+.[A-Za-z]{2,}"
-            let emailPredicate = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
-            return emailPredicate.evaluate(with: email)
-        }
 }
 

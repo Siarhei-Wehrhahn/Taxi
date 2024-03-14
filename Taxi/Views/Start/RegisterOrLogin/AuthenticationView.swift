@@ -17,6 +17,17 @@ struct AuthenticationView: View {
                 .edgesIgnoringSafeArea(.all)
             
             VStack {
+                Button {
+                    viewModel.showRegister = false
+                } label: {
+                    HStack {
+                        Image(systemName: "Chevron.left")
+                        
+                        Text("zurück")
+                            .padding(.bottom, 100)
+                            .padding(.trailing, 200)
+                    }
+                }
                 Text("Taxi Taxi")
                     .bold()
                     .foregroundStyle(.yellow)
@@ -43,15 +54,20 @@ struct AuthenticationView: View {
                 Button("registrieren") {
                     if viewModel.password.count < 6 {
                         viewModel.showPasswordAlert = true
-                    } else if viewModel.isValidEmail() {
-                        viewModel.register()
                     } else {
-                        viewModel.showEmailAlert = true
-                    }
+                        viewModel.register()
+                    } 
                 }
                 .buttonStyle(BorderedProminentButtonStyle())
                 .padding()
                 .padding(.top)
+                
+                Button("Anonym registrieren") {
+                    viewModel.createAnonym()
+                }
+                .buttonStyle(BorderedProminentButtonStyle())
+                .padding()
+                .padding()
                 
             }
         }

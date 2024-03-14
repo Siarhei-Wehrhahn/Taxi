@@ -7,4 +7,6 @@
 
 import Foundation
 
-class Trip
+class Trips: Codable {
+    
+}

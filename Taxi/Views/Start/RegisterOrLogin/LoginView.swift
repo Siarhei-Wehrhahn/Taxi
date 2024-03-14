@@ -39,15 +39,21 @@ struct LoginView: View {
                     .buttonStyle(BorderedProminentButtonStyle())
                     .padding()
                     
-                    NavigationLink(destination:AuthenticationView()
-                        .environmentObject(AuthenticationViewModel())) {
-                            Text("Registrieren")
-                        }
-                        .buttonStyle(BorderedProminentButtonStyle())
+                    Button  {
+                        viewModel.showRegister = true
+                    } label: {
+                        Text("Registrieren")
+                    }
+                    .buttonStyle(BorderedProminentButtonStyle())
+                    .padding()
                     
-                    Text("Ohne Account fortfahren")
-                        .foregroundStyle(.blue)
-                        .padding()
+                    Button {
+                        viewModel.loginAnonym()
+                    } label: {
+                        Text("Mit Anonymen Account fortfahren")
+                            .foregroundStyle(.blue)
+                            .padding()
+                    }
                 }
             }
         }

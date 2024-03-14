@@ -36,7 +36,7 @@ struct Taxi_App: App {
                     ContentView()
                         .environmentObject(authenticationViewModel)
                 } else {
-                    LoginView()
+                    RegisterOrLogin()
                         .environmentObject(authenticationViewModel)
                         .preferredColorScheme(.light)
                 }

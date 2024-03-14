@@ -11,7 +11,6 @@ struct FavoriteView: View {
     @EnvironmentObject private var favoriteViewModel: FavoriteViewModel
     @EnvironmentObject private var callTaxiViewModel: CallTaxiViewModel
     @Binding var selection: Int
-    @State private var showSheet = false
     
     var body: some View {
         NavigationStack {
@@ -44,20 +43,10 @@ struct FavoriteView: View {
                     }
                 }
             }
-            .navigationTitle("Favoriten")
-            .navigationBarTitleDisplayMode(.automatic)
-            .navigationBarItems(trailing: Button {
-                showSheet.toggle()
-            } label: {
-                Image(systemName: "plus")
-            })
-            .navigationBarItems(trailing: Button {
-                favoriteViewModel.deleteAll()
-            } label: {
-                Image(systemName: "trash")
-            })
         }
-        .sheet(isPresented: $showSheet, content: {
+        .navigationTitle("Favoriten")
+        .navigationBarTitleDisplayMode(.automatic)
+        .sheet(isPresented: $favoriteViewModel.showSheet, content: {
             FavoriteViewSheet()
                 .presentationDetents([.medium, .large])
         })

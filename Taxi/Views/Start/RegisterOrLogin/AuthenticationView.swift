@@ -9,9 +9,6 @@ import SwiftUI
 
 struct AuthenticationView: View {
     @EnvironmentObject private var viewModel: AuthenticationViewModel
-    @State private var showPasswordAlert = false
-    @State private var showEmailAlert = false
-    @State private var showNickName = false
     @State private var nicknameOpacity: Double = 0
     
     var body: some View {
@@ -45,22 +42,29 @@ struct AuthenticationView: View {
                 
                 Button("registrieren") {
                     if viewModel.password.count < 6 {
-                        showPasswordAlert = true
+                        viewModel.showPasswordAlert = true
                     } else if viewModel.isValidEmail() {
                         viewModel.register()
                     } else {
-                        showEmailAlert = true
+                        viewModel.showEmailAlert = true
                     }
                 }
                 .buttonStyle(BorderedProminentButtonStyle())
                 .padding()
                 .padding(.top)
+                
             }
         }
-        .alert(isPresented: $showPasswordAlert) {
+        .alert(isPresented: $viewModel.showAlert) {
+            Alert(title: Text("Anmeldedaten falsch!"), message: Text("Die E-Mail adresse oder das passwort ist leider falsch."), dismissButton: .default(Text("OK")))
+        }
+        .alert(isPresented: $viewModel.showAlert) {
+            Alert(title: Text("E-Mail Vorhanden"), message: Text("Die eingegebene E-Mail-Adresse ist bereits registriert. Bitte verwenden Sie diese, um sich einzuloggen."), dismissButton: .default(Text("OK")))
+        }
+        .alert(isPresented: $viewModel.showPasswordAlert) {
             Alert(title: Text("Passwort zu kurz"), message: Text("Das Passwort muss mindestens 6 Zeichen lang sein."), dismissButton: .default(Text("OK")))
         }
-        .alert(isPresented: $showEmailAlert) {
+        .alert(isPresented: $viewModel.showEmailAlert) {
             Alert(title: Text("Ungültige Email"), message: Text("Gebe bitte eine gültige email adrese an!"), dismissButton: .default(Text("OK")))
         }
     }

@@ -39,10 +39,11 @@ struct LoginView: View {
                     .buttonStyle(BorderedProminentButtonStyle())
                     .padding()
                     
-                    NavigationLink(destination: AuthenticationView()) {
-                        Text("Registrieren")
-                    }
-                    .buttonStyle(BorderedProminentButtonStyle())
+                    NavigationLink(destination:AuthenticationView()
+                        .environmentObject(AuthenticationViewModel())) {
+                            Text("Registrieren")
+                        }
+                        .buttonStyle(BorderedProminentButtonStyle())
                     
                     Text("Ohne Account fortfahren")
                         .foregroundStyle(.blue)

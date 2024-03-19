@@ -1,6 +1,6 @@
 //
 //  CallTaxiViewModel.swift
-//  Taxi Arif
+//  Taxi
 //
 //  Created by Siarhei Wehrhahn on 24.02.24.
 //
@@ -11,6 +11,7 @@ import Combine
 import SwiftUI
 
 class CallTaxiViewModel: ObservableObject {
+    @Published var order: [Order] = []
     @Published var showSheet: Bool = false
     @Published var time = Date()
     @Published var start = ""
@@ -30,6 +31,8 @@ class CallTaxiViewModel: ObservableObject {
     @Published var endCoordinate: CLLocationCoordinate2D?
     private var subscriptions = Set<AnyCancellable>()
     
+    private var auth = AuthenticationViewModel()
+    
     init() {
         $start.debounce(for: .seconds(2), scheduler: DispatchQueue.main)
             .sink(receiveValue: { [weak self] t in
@@ -46,6 +49,17 @@ class CallTaxiViewModel: ObservableObject {
                 })
             } )
             .store(in: &subscriptions)
+    }
+    
+    func createOrder() {
+        let order = Order(id: UUID(), userName: auth.user!.nickName, start: self.start, destination: self.destination, time: self.time, kids: self.children, luggage: self.luggage, pets: self.pets, helpToSitIn: self.helpToSitIn, passenger: Int(self.numberOfPassager), taken: false, takenInMin10: false)
+        
+        do {
+            try FirebaseManager.shared.fireStore.collection("order").document().setData(from: order)
+            self.order.append(order)
+        } catch {
+            print("Could not create user: \(error)")
+        }
     }
     
     func formatDate(_ date: Date) -> String {

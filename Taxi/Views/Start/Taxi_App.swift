@@ -1,6 +1,6 @@
 //
-//  Taxi_ArifApp.swift
-//  Taxi Arif
+//  Taxi_App.swift
+//  Taxi
 //
 //  Created by Siarhei Wehrhahn on 22.02.24.
 //
@@ -11,7 +11,7 @@ import Firebase
 @main
 struct Taxi_App: App {
     @StateObject private var viewRouter = ViewRouter()
-    @StateObject var authenticationViewModel = AuthenticationViewModel()
+    @StateObject private var authenticationViewModel = AuthenticationViewModel()
     
     init() {
         FirebaseConfiguration.shared.setLoggerLevel(.min)
@@ -33,7 +33,7 @@ struct Taxi_App: App {
                             }
                         }
                 } else if authenticationViewModel.userIsLoggedIn {
-                    ContentView()
+                    UserOrCustomerView()
                         .environmentObject(authenticationViewModel)
                 } else {
                     RegisterOrLogin()

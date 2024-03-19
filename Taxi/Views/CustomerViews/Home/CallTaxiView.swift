@@ -1,6 +1,6 @@
 //
 //  CallTaxiView.swift
-//  Taxi Arif
+//  Taxi
 //
 //  Created by Siarhei Wehrhahn on 22.02.24.
 //
@@ -41,7 +41,7 @@ struct CallTaxiView: View {
                     
                 } else {
                     Button {
-                        // Hier die Bestellaktion einfügen
+                        viewModel.createOrder()
                     } label: {
                         Text("Für ca \(String(format: "%.2f", price))€ bestellen")
                             .foregroundStyle(.black)

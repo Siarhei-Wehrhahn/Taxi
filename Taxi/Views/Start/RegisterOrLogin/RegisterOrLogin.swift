@@ -8,17 +8,15 @@
 import SwiftUI
 
 struct RegisterOrLogin: View {
-    @EnvironmentObject private var viewModel: AuthenticationViewModel
+    @StateObject private var viewModel = AuthenticationViewModel()
     
     var body: some View {
         if viewModel.showRegister {
             AuthenticationView()
+                .environmentObject(viewModel)
         } else {
             LoginView()
+                .environmentObject(viewModel)
         }
     }
-}
-
-#Preview {
-    RegisterOrLogin()
 }

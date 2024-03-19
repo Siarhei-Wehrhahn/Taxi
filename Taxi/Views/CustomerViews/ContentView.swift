@@ -1,6 +1,6 @@
 //
 //  ContentView.swift
-//  Taxi Arif
+//  Taxi
 //
 //  Created by Siarhei Wehrhahn on 22.02.24.
 //
@@ -10,6 +10,7 @@ struct ContentView: View {
     @StateObject private var callTaxiViewModel = CallTaxiViewModel()
     @StateObject private var favoriteViewModel = FavoriteViewModel()
     @State var selection = 0
+    
     var body: some View {
         NavigationStack {
             TabView(selection: $selection) {
@@ -63,5 +64,6 @@ struct ContentView: View {
 }
 #Preview {
     ContentView()
-        .environmentObject(AuthenticationViewModel())
+        .environmentObject(CallTaxiViewModel())
+        .environmentObject(FavoriteViewModel())
 }

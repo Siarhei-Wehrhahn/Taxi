@@ -1,6 +1,6 @@
 //
 //  ServiceRowView.swift
-//  Taxi Arif
+//  Taxi
 //
 //  Created by Siarhei Wehrhahn on 23.02.24.
 //

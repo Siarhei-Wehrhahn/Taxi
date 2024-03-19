@@ -27,18 +27,10 @@ class AuthenticationViewModel: ObservableObject {
         self.checkLogin()
     }
     
-    func loginAnonym() {
-        FirebaseManager.shared.authenticator.signInAnonymously { authResult, error in
-            if let user = self.handleAuthResult(authResult: authResult, error: error) {
-                self.fetchFireUser(id: user.uid)
-            }
-        }
-    }
-    
     func createAnonym() {
         FirebaseManager.shared.authenticator.signInAnonymously { authResult, error in
             if let user = self.handleAuthResult(authResult: authResult, error: error) {
-                self.createFireUser(id: user.uid, email: "", name: "Anonym")
+                self.createFireUser(id: user.uid, email: "Anonym", name: "Anonym")
             }
         }
     }
@@ -65,6 +57,35 @@ class AuthenticationViewModel: ObservableObject {
             self.user = nil
         } catch {
             print("error signing out: \(error)")
+        }
+    }
+
+    func deleteAccount() {
+        guard let currentUser = FirebaseManager.shared.authenticator.currentUser else {
+            print("No user logged in.")
+            return
+        }
+        
+        // Löschen des Benutzers aus der Authentifizierung
+        currentUser.delete { error in
+            if let error = error {
+                print("Error deleting user: \(error)")
+            } else {
+                print("User deleted successfully.")
+                
+                // Löschen der Benutzerdaten aus der Firestore-Datenbank
+                let userId = currentUser.uid
+                let userRef = FirebaseManager.shared.fireStore.collection("user").document(userId)
+                
+                userRef.delete { error in
+                    if let error = error {
+                        print("Error deleting user data: \(error)")
+                    } else {
+                        print("User data deleted successfully.")
+                    }
+                }
+                self.user = nil
+            }
         }
     }
     

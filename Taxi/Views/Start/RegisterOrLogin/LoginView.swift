@@ -29,7 +29,7 @@ struct LoginView: View {
                     
                     SecureField("Passwort", text: $viewModel.password)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
-                        .padding()
+                        .padding(.horizontal)
                     
                     Button  {
                         viewModel.login()
@@ -45,12 +45,11 @@ struct LoginView: View {
                         Text("Registrieren")
                     }
                     .buttonStyle(BorderedProminentButtonStyle())
-                    .padding()
                     
                     Button {
-                        viewModel.loginAnonym()
+                        viewModel.createAnonym()
                     } label: {
-                        Text("Mit Anonymen Account fortfahren")
+                        Text("Ohne Account fortfahren")
                             .foregroundStyle(.blue)
                             .padding()
                     }

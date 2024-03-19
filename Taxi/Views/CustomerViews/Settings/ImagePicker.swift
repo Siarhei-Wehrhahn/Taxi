@@ -11,6 +11,7 @@ import SwiftUI
 struct ImagePicker: UIViewControllerRepresentable {
     @Binding var image: UIImage?
     @Environment(\.presentationMode) var presentationMode
+    @StateObject var settingsViewModel = SettingsViewModel()
     
     func makeCoordinator() -> Coordinator {
         return Coordinator(parent: self)

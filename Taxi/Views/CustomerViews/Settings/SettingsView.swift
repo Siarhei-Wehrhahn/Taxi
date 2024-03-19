@@ -8,13 +8,14 @@
 import SwiftUI
 
 struct SettingsView: View {
-    @EnvironmentObject private var viewModel: AuthenticationViewModel
-    @State private var profileImage: UIImage? = nil
+    @EnvironmentObject private var authViewModel: AuthenticationViewModel
+    @StateObject private var settingsViewModel = SettingsViewModel()
     @State private var isShowingImagePicker = false
+    @State private var showAlert = false
     
     var body: some View {
         VStack {
-            if let profileImage = profileImage {
+            if let profileImage = settingsViewModel.profileImage {
                 Image(uiImage: profileImage)
                     .resizable()
                     .scaledToFill()
@@ -33,7 +34,7 @@ struct SettingsView: View {
                         .padding()
                 }
                 .sheet(isPresented: $isShowingImagePicker) {
-                    ImagePicker(image: $profileImage)
+                    ImagePicker(image: $settingsViewModel.profileImage)
                 }
             }
             
@@ -42,7 +43,7 @@ struct SettingsView: View {
                 
                 Spacer()
                 
-                Text(viewModel.user?.nickName ?? "Unbekannter Name")
+                Text(authViewModel.user?.nickName ?? "Unbekannter Name")
             }
             .padding()
             
@@ -51,7 +52,7 @@ struct SettingsView: View {
                 
                 Spacer()
                 
-                Text(viewModel.user?.email ?? "Unbekannte E-Mail")
+                Text(authViewModel.user?.email ?? "Unbekannte E-Mail")
             }
             .padding(.horizontal)
             .padding(.bottom)
@@ -76,13 +77,33 @@ struct SettingsView: View {
             Spacer()
             
             Button("Abmelden") {
-                viewModel.logout()
+                if authViewModel.user?.nickName == "Anonym" {
+                    authViewModel.deleteAccount()
+                    authViewModel.logout()
+                } else {
+                    authViewModel.logout()
+                }
+            }
+            .frame(width: 300, height: 40)
+            .foregroundStyle(.white)
+            .background(.red)
+            .clipShape(RoundedRectangle(cornerRadius: 7.0))
+            .padding(.bottom, 5)
+            
+            Button("Account löschen") {
+                showAlert.toggle()
             }
             .frame(width: 300, height: 40)
             .foregroundStyle(.white)
             .background(.red)
             .clipShape(RoundedRectangle(cornerRadius: 7.0))
             .padding(.bottom, 50)
+            .alert(isPresented: $showAlert) {
+                Alert(title: Text("Account löschen"), message: Text("Bist du sicher, dass du deinen Account löschen möchtest? Alle deine Daten werden dauerhaft gelöscht."), primaryButton: .destructive(Text("Löschen")) {
+                    authViewModel.deleteAccount()
+                    authViewModel.logout()
+                }, secondaryButton: .cancel(Text("Abbrechen")))
+            }
         }
     }
 }

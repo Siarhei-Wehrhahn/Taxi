@@ -1,6 +1,6 @@
 //
 //  SettingsCallTaxiView.swift
-//  Taxi Arif
+//  Taxi
 //
 //  Created by Siarhei Wehrhahn on 24.02.24.
 //

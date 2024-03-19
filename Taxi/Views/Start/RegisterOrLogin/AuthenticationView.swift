@@ -20,14 +20,12 @@ struct AuthenticationView: View {
                 Button {
                     viewModel.showRegister = false
                 } label: {
-                    HStack {
-                        Image(systemName: "Chevron.left")
-                        
-                        Text("zurück")
-                            .padding(.bottom, 100)
-                            .padding(.trailing, 200)
-                    }
+                    Image(systemName: "chevron.left")
+                        .foregroundStyle(.white)
+                        .font(Font.system(size: 20))
                 }
+                .offset(CGSize(width: -170.0, height: -130.0))
+                
                 Text("Taxi Taxi")
                     .bold()
                     .foregroundStyle(.yellow)
@@ -56,18 +54,11 @@ struct AuthenticationView: View {
                         viewModel.showPasswordAlert = true
                     } else {
                         viewModel.register()
-                    } 
+                    }
                 }
                 .buttonStyle(BorderedProminentButtonStyle())
                 .padding()
                 .padding(.top)
-                
-                Button("Anonym registrieren") {
-                    viewModel.createAnonym()
-                }
-                .buttonStyle(BorderedProminentButtonStyle())
-                .padding()
-                .padding()
                 
             }
         }

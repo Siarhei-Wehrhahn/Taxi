@@ -19,6 +19,8 @@ class ChatRepository: ObservableObject {
         // Die URL zur API
         let apiUrl = URL(string: "https://api.openai.com/v1/chat/completions")!
         
+        // Neun api key anfordern
+        
         // Die Daten für die Chat-Anfrage
         let requestData: [String: Any] = [
             "model": "gpt-3.5-turbo",

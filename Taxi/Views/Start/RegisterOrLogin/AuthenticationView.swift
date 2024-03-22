@@ -63,9 +63,6 @@ struct AuthenticationView: View {
             }
         }
         .alert(isPresented: $viewModel.showAlert) {
-            Alert(title: Text("Anmeldedaten falsch!"), message: Text("Die E-Mail adresse oder das passwort ist leider falsch."), dismissButton: .default(Text("OK")))
-        }
-        .alert(isPresented: $viewModel.showAlert) {
             Alert(title: Text("E-Mail Vorhanden"), message: Text("Die eingegebene E-Mail-Adresse ist bereits registriert. Bitte verwenden Sie diese, um sich einzuloggen."), dismissButton: .default(Text("OK")))
         }
         .alert(isPresented: $viewModel.showPasswordAlert) {

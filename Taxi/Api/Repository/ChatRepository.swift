@@ -35,7 +35,7 @@ class ChatRepository: ObservableObject {
         // Die Anfrage erstellen
         var urlRequest = URLRequest(url: apiUrl)
         urlRequest.httpMethod = "POST"
-        urlRequest.addValue("Bearer \(apiKey)", forHTTPHeaderField: "Authorization")
+        urlRequest.addValue("Bearer \(ApiKey.chatGpt)", forHTTPHeaderField: "Authorization")
         urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
         // Die Anfragedaten kodieren

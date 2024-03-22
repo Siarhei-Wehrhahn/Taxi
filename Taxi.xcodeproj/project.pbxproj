@@ -38,6 +38,7 @@
 		816F94472B895B6E00F231E9 /* HeaderCallTaxiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 816F94462B895B6E00F231E9 /* HeaderCallTaxiView.swift */; };
 		816F94492B895BC600F231E9 /* SettingsCallTaxiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 816F94482B895BC600F231E9 /* SettingsCallTaxiView.swift */; };
 		816F944B2B895E1D00F231E9 /* CallTaxiViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 816F944A2B895E1D00F231E9 /* CallTaxiViewModel.swift */; };
+		8173CF712BADB77C00056B3D /* ApiKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8173CF702BADB77C00056B3D /* ApiKey.swift */; };
 		8183B9D42B908794003896C9 /* ChatRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8183B9D32B908794003896C9 /* ChatRequest.swift */; };
 		8183B9D72B908959003896C9 /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8183B9D62B908959003896C9 /* ChatViewModel.swift */; };
 		8183B9DA2B908987003896C9 /* ChatRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8183B9D92B908987003896C9 /* ChatRepository.swift */; };
@@ -130,6 +131,7 @@
 		816F94462B895B6E00F231E9 /* HeaderCallTaxiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCallTaxiView.swift; sourceTree = "<group>"; };
 		816F94482B895BC600F231E9 /* SettingsCallTaxiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCallTaxiView.swift; sourceTree = "<group>"; };
 		816F944A2B895E1D00F231E9 /* CallTaxiViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallTaxiViewModel.swift; sourceTree = "<group>"; };
+		8173CF702BADB77C00056B3D /* ApiKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiKey.swift; sourceTree = "<group>"; };
 		8183B9D32B908794003896C9 /* ChatRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRequest.swift; sourceTree = "<group>"; };
 		8183B9D62B908959003896C9 /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
 		8183B9D92B908987003896C9 /* ChatRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRepository.swift; sourceTree = "<group>"; };
@@ -316,6 +318,7 @@
 		8160A7A82B87EC0300418E20 /* Taxi */ = {
 			isa = PBXGroup;
 			children = (
+				8173CF6F2BADB74900056B3D /* ApiKey */,
 				8183B9CF2B90842F003896C9 /* Api */,
 				8160A7D82B87FC6C00418E20 /* Utils */,
 				8183B9DB2B9202CA003896C9 /* Views */,
@@ -367,6 +370,14 @@
 				8160A7D92B87FC9E00418E20 /* PickerView.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		8173CF6F2BADB74900056B3D /* ApiKey */ = {
+			isa = PBXGroup;
+			children = (
+				8173CF702BADB77C00056B3D /* ApiKey.swift */,
+			);
+			path = ApiKey;
 			sourceTree = "<group>";
 		};
 		8183B9CF2B90842F003896C9 /* Api */ = {
@@ -636,6 +647,7 @@
 				8103532C2B9DD3A900520EE0 /* Trip.swift in Sources */,
 				810353382B9F209000520EE0 /* MainView.swift in Sources */,
 				8160A7D52B87EC4600418E20 /* CallTaxiView.swift in Sources */,
+				8173CF712BADB77C00056B3D /* ApiKey.swift in Sources */,
 				8183B9DA2B908987003896C9 /* ChatRepository.swift in Sources */,
 				816F94492B895BC600F231E9 /* SettingsCallTaxiView.swift in Sources */,
 				814A11612B99DA0200BF9F0A /* SettingsView.swift in Sources */,

@@ -40,10 +40,10 @@ class OrderViewModel: ObservableObject {
     
     func markOrderAsTaken(_ order: Order) {
         if let orderIndex = self.orders.firstIndex(of: order) {
-            self.orders[orderIndex].taken = true
+            self.orders[orderIndex].taken.toggle()
             
             let orderRef = db.collection("order").document(order.id.uuidString)
-            orderRef.updateData(["taken": true]) { error in
+            orderRef.updateData(["taken": self.orders[orderIndex].taken]) { error in
                 if let error = error {
                     print("Error updating order: \(error.localizedDescription)")
                     print("Error code: \((error as NSError).code)")
@@ -53,5 +53,23 @@ class OrderViewModel: ObservableObject {
             }
         }
     }
+
+    
+    func takenInMin10(_ order: Order) {
+        if let orderIndex = self.orders.firstIndex(of: order) {
+            self.orders[orderIndex].takenInMin10.toggle()
+            
+            let orderRef = db.collection("order").document(order.id.uuidString)
+            orderRef.updateData(["takenInMin10": self.orders[orderIndex].takenInMin10]) { error in
+                if let error = error {
+                    print("Error updating order: \(error.localizedDescription)")
+                    print("Error code: \((error as NSError).code)")
+                } else {
+                    print("Order updated successfully")
+                }
+            }
+        }
+    }
+
 }
 

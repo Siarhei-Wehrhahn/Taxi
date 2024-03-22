@@ -58,6 +58,19 @@ struct CallTaxiView: View {
                 CallTaxiDetailSheetView()
                     .presentationDetents([.medium, .large])
             }
+            .alert("Angenommen!", isPresented: $viewModel.showTakenAlert) {
+                Text("Deine Fahrt wurde angenommen! \nDein fahrer wird so schnell wie möglich bei dir sein.")
+                
+                Button("OK!") {
+                    viewModel.showTakenAlert = false
+                }
+            }
+            .alert("Angenommen aber dauert 10min", isPresented: $viewModel.showTakenLaterAlert) {
+                Text("Deine fahrt wird in 10min angenommen!")
+                Button("OK!") {
+                    viewModel.showTakenLaterAlert = false
+                }
+            }
         }
     }
 }

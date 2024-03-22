@@ -7,6 +7,7 @@
 
 import Foundation
 import FirebaseAuth
+import FirebaseFirestore
 
 class AuthenticationViewModel: ObservableObject {
     @Published var user: FireUser?
@@ -26,6 +27,35 @@ class AuthenticationViewModel: ObservableObject {
     init() {
         self.checkLogin()
     }
+    
+    
+    func temporarilySetUnavailableForTenMinutes() {
+        let orderRef = Firestore.firestore().collection("user").document(user!.id)
+        
+        // Zunächst auf false setzen
+        orderRef.updateData(["aviable": false]) { error in
+            if let error = error {
+                print("Error updating order: \(error.localizedDescription)")
+                print("Error code: \((error as NSError).code)")
+            } else {
+                print("Order updated successfully")
+                
+                // Timer für 10 Minuten erstellen
+                DispatchQueue.main.asyncAfter(deadline: .now() + 300) { // 300 Sekunden = 5 Minuten
+                    // Nach Ablauf des Timers den Wert wieder auf true setzen
+                    orderRef.updateData(["aviable": true]) { error in
+                        if let error = error {
+                            print("Error updating order: \(error.localizedDescription)")
+                            print("Error code: \((error as NSError).code)")
+                        } else {
+                            print("Order availability reset successfully")
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     
     func createAnonym() {
         FirebaseManager.shared.authenticator.signInAnonymously { authResult, error in
@@ -115,7 +145,7 @@ class AuthenticationViewModel: ObservableObject {
     }
     
     private func createFireUser(id: String, email: String, name: String) {
-        let fireUser = FireUser(id: id, nickName: name, email: email, registeredAt: Date(), driver: false)
+        let fireUser = FireUser(id: id, nickName: name, email: email, registeredAt: Date(), driver: false, aviable: true)
         
         do {
             try FirebaseManager.shared.fireStore.collection("user").document(id).setData(from: fireUser)

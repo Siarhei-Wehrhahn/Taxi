@@ -9,9 +9,12 @@ import Foundation
 import MapKit
 import Combine
 import SwiftUI
+import FirebaseFirestore
 
 class CallTaxiViewModel: ObservableObject {
     @Published var order: [Order] = []
+    @Published var showTakenAlert = false
+    @Published var showTakenLaterAlert = false
     @Published var showSheet: Bool = false
     @Published var time = Date()
     @Published var start = ""
@@ -30,6 +33,7 @@ class CallTaxiViewModel: ObservableObject {
     @Published var startCoordinate: CLLocationCoordinate2D?
     @Published var endCoordinate: CLLocationCoordinate2D?
     private var subscriptions = Set<AnyCancellable>()
+    private var orderListener: ListenerRegistration?
     
     private var auth = AuthenticationViewModel()
     
@@ -49,13 +53,16 @@ class CallTaxiViewModel: ObservableObject {
                 })
             } )
             .store(in: &subscriptions)
+        
+        setupOrderListener()
     }
     
     func createOrder() {
-        let order = Order(id: UUID(), userName: auth.user!.nickName, start: self.start, destination: self.destination, time: self.time, kids: self.children, luggage: self.luggage, pets: self.pets, helpToSitIn: self.helpToSitIn, passenger: Int(self.numberOfPassager), taken: false, takenInMin10: false)
+        let id = UUID()
+        let order = Order(id: id, userId: auth.user!.id, userName: auth.user!.nickName, start: self.start, destination: self.destination, time: self.time, kids: self.children, luggage: self.luggage, pets: self.pets, helpToSitIn: self.helpToSitIn, passenger: Int(self.numberOfPassager), taken: false, takenInMin10: false)
         
         do {
-            try FirebaseManager.shared.fireStore.collection("order").document().setData(from: order)
+            try FirebaseManager.shared.fireStore.collection("order").document(id.uuidString).setData(from: order)
             self.order.append(order)
         } catch {
             print("Could not create user: \(error)")
@@ -95,42 +102,68 @@ class CallTaxiViewModel: ObservableObject {
     }
     
     func serviceButton(label: String, imageName: String, buttonType: String, price: String) -> some View {
-            Button {
-                self.selectedButton = buttonType
-            } label: {
-                VStack {
-                    Image(imageName)
-                        .resizable()
-                        .frame(width: 55, height: 55)
-                        .shadow(radius: 2)
-                    Text(label)
-                        .foregroundStyle(.black)
-                    Text(price)
-                        .font(Font.system(size: 12))
-                        .foregroundStyle(.black)
-                        .opacity(0.4)
+        Button {
+            self.selectedButton = buttonType
+        } label: {
+            VStack {
+                Image(imageName)
+                    .resizable()
+                    .frame(width: 55, height: 55)
+                    .shadow(radius: 2)
+                Text(label)
+                    .foregroundStyle(.black)
+                Text(price)
+                    .font(Font.system(size: 12))
+                    .foregroundStyle(.black)
+                    .opacity(0.4)
+            }
+        }
+        .padding()
+        .background(selectedButton == buttonType ? Color.gray : Color.lightGray)
+        .clipShape(RoundedRectangle(cornerRadius: 25))
+        .shadow(radius: 2, x: 2.2, y: 2.2)
+        .rotation3DEffect(.degrees(selectedButton == buttonType ? -10 : 0), axis: (x: -1, y: 0, z: 0))
+        .overlay(
+            RoundedRectangle(cornerRadius: 25)
+                .stroke(Color.gray, lineWidth: 4)
+                .padding(1)
+                .blur(radius: 5)
+                .mask(selectedButton != buttonType ? RoundedRectangle(cornerRadius: 25)
+                    .fill(
+                        RadialGradient(
+                            gradient: Gradient(colors: [Color.red, Color.clear]),
+                            center: .center,
+                            startRadius: 1,
+                            endRadius: 0 // Adjust this value to control how far the gradient extends from the center to the edges
+                        )
+                    ) : nil)
+        )
+    }
+    
+    private func setupOrderListener() {
+        guard let userId = auth.user?.id else { return }
+        
+        let ordersCollection = Firestore.firestore().collection("order")
+        orderListener = ordersCollection.whereField("userId", isEqualTo: userId).addSnapshotListener { [weak self] snapshot, error in
+            guard let snapshot = snapshot else {
+                print("Error fetching orders: \(error?.localizedDescription ?? "Unknown error")")
+                return
+            }
+            
+            snapshot.documentChanges.forEach { change in
+                if change.type == .modified {
+                    let modifiedOrder = try? change.document.data(as: Order.self)
+                    if let modifiedOrder = modifiedOrder {
+                        if modifiedOrder.taken {
+                            self?.showTakenAlert = true
+                        }
+                        
+                        if modifiedOrder.takenInMin10 {
+                            self?.showTakenLaterAlert = true
+                        }
+                    }
                 }
             }
-            .padding()
-            .background(selectedButton == buttonType ? Color.gray : Color.lightGray)
-            .clipShape(RoundedRectangle(cornerRadius: 25))
-            .shadow(radius: 2, x: 2.2, y: 2.2)
-            .rotation3DEffect(.degrees(selectedButton == buttonType ? -10 : 0), axis: (x: -1, y: 0, z: 0))
-            .overlay(
-                RoundedRectangle(cornerRadius: 25)
-                    .stroke(Color.gray, lineWidth: 4)
-                    .padding(1)
-                    .blur(radius: 5)
-                    .mask(selectedButton != buttonType ? RoundedRectangle(cornerRadius: 25)
-                            .fill(
-                                RadialGradient(
-                                    gradient: Gradient(colors: [Color.red, Color.clear]),
-                                    center: .center,
-                                    startRadius: 1,
-                                    endRadius: 0 // Adjust this value to control how far the gradient extends from the center to the edges
-                                )
-                            )
-                          : nil)
-            )
         }
+    }
 }

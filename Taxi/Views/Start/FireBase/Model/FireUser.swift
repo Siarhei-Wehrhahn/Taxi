@@ -13,4 +13,5 @@ struct FireUser: Codable {
     let email: String
     let registeredAt: Date
     let driver: Bool
+    var aviable: Bool
 }

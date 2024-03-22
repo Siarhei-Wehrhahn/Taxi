@@ -16,76 +16,87 @@ struct OrdersView: View {
     var body: some View {
         VStack {
             ScrollView {
-                ForEach(viewModel.orders) { order in
-                    
-                    VStack {
+                if authViewModel.user!.aviable {
+                    ForEach(viewModel.orders) { order in
                         
-                        HStack{
-                            VStack(alignment: .leading) {
-                                Text("Name: \(order.userName)")
-                                Text("Start: \(order.start)")
-                                Text("Ziel: \(order.destination)")
-                            }
+                        VStack {
                             
-                            Spacer()
-                            
-                            VStack(alignment: .trailing) {
-                                if order.kids != nil {
-                                    Text("Kinder:   \(order.kids != nil ? String(order.kids!) : "-")")
+                            HStack{
+                                VStack(alignment: .leading) {
+                                    Text("Name: \(order.userName)")
+                                    Text("Start: \(order.start)")
+                                    Text("Ziel: \(order.destination)")
                                 }
                                 
-                                if order.luggage != nil {
-                                    Text("Gepäck:  \(order.luggage != nil ? (order.luggage! ? "ja" : "nein") : "-")")
-                                }
+                                Spacer()
                                 
-                                if order.pets != nil {
-                                    Text("Haustier:  \(order.pets != nil ? (order.pets! ? "ja" : "nein") : "-")")
-                                }
-                                
-                                HStack {
+                                VStack(alignment: .trailing) {
+                                    if order.kids != nil {
+                                        Text("Kinder:   \(order.kids != nil ? String(order.kids!) : "-")")
+                                    }
                                     
-                                    if order.helpToSitIn != nil {
-                                        Text("einstiegshilfe:")
-                                        Text("\(order.helpToSitIn != nil ? (order.helpToSitIn! ? "ja" : "nein") : "-")")
-                                            .lineLimit(2)
+                                    if order.luggage != nil {
+                                        Text("Gepäck:  \(order.luggage != nil ? (order.luggage! ? "ja" : "nein") : "-")")
+                                    }
+                                    
+                                    if order.pets != nil {
+                                        Text("Haustier:  \(order.pets != nil ? (order.pets! ? "ja" : "nein") : "-")")
+                                    }
+                                    
+                                    HStack {
+                                        
+                                        if order.helpToSitIn != nil {
+                                            Text("einstiegshilfe:")
+                                            Text("\(order.helpToSitIn != nil ? (order.helpToSitIn! ? "ja" : "nein") : "-")")
+                                                .lineLimit(2)
+                                        }
+                                    }
+                                    
+                                    if order.passenger != nil {
+                                        Text("Passagiere:   \(order.passenger != nil ? String(order.passenger!) : "-")")
                                     }
                                 }
+                            }
+                            .padding(.bottom)
+                            
+                            HStack(spacing: 33) {
                                 
-                                if order.passenger != nil {
-                                    Text("Passagiere:   \(order.passenger != nil ? String(order.passenger!) : "-")")
+                                if !order.takenInMin10 {
+                                    Button {
+                                        viewModel.markOrderAsTaken(order)
+                                    } label: {
+                                        Text(order.taken ? "Abbrechen" : "Annehmen")
+                                    }
+                                    .buttonStyle(BorderedProminentButtonStyle())
+                                }
+                                
+                                if !order.taken {
+                                    Button {
+                                        viewModel.takenInMin10(order)
+                                    } label: {
+                                        Text(order.takenInMin10 ? "Abbrechen" : "In 10min Annehmen")
+                                    }
+                                    .buttonStyle(BorderedProminentButtonStyle())
+                                }
+                                
+                                if !order.taken && !order.takenInMin10 {
+                                    Button {
+                                        authViewModel.temporarilySetUnavailableForTenMinutes()
+                                    } label: {
+                                        Text("Besetzt")
+                                    }
+                                    .buttonStyle(BorderedProminentButtonStyle())
                                 }
                             }
-                        }
-                        .padding(.bottom)
-                        
-                        HStack(spacing: 33) {
-                            Button {
-                                viewModel.markOrderAsTaken(order)
-                            } label: {
-                                Text("Annehmen")
-                            }
-                            .buttonStyle(BorderedProminentButtonStyle())
                             
-                            Button {
-                                
-                            } label: {
-                                Text("In 10min Annehmen")
-                            }
-                            .buttonStyle(BorderedProminentButtonStyle())
-                            
-                            Button {
-                                
-                            } label: {
-                                Text("Besetzt")
-                            }
-                            .buttonStyle(BorderedProminentButtonStyle())
+                            Divider()
+                                .padding(.vertical)
                         }
-                        
-                        Divider()
-                            .padding(.vertical)
                     }
+                    .padding(.horizontal)
+                } else {
+                    EmptyView()
                 }
-                .padding(.horizontal)
             }
             .onAppear {
                 viewModel.fetchData()

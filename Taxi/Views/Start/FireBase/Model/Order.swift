@@ -9,6 +9,7 @@ import Foundation
 // Bestell informationen einfügen
 struct Order: Codable, Identifiable, Hashable {
     var id: UUID
+    let userId: String
     let userName: String
     let start: String
     let destination: String

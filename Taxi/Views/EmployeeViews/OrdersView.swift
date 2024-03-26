@@ -16,7 +16,7 @@ struct OrdersView: View {
     var body: some View {
         VStack {
             ScrollView {
-                if authViewModel.user!.aviable {
+                if authViewModel.isUserAvailable {
                     ForEach(viewModel.orders) { order in
                         
                         VStack {
@@ -64,6 +64,8 @@ struct OrdersView: View {
                                 if !order.takenInMin10 {
                                     Button {
                                         viewModel.markOrderAsTaken(order)
+                                        viewModel.addDriverIdToOrder(order, driverId: authViewModel.user!.id)
+                                        authViewModel.startAvailabilityListener(forUserID: order.driverId)
                                     } label: {
                                         Text(order.taken ? "Abbrechen" : "Annehmen")
                                     }
@@ -73,6 +75,8 @@ struct OrdersView: View {
                                 if !order.taken {
                                     Button {
                                         viewModel.takenInMin10(order)
+                                        viewModel.addDriverIdToOrder(order, driverId: authViewModel.user!.id)
+                                        authViewModel.startAvailabilityListener(forUserID: order.driverId)
                                     } label: {
                                         Text(order.takenInMin10 ? "Abbrechen" : "In 10min Annehmen")
                                     }

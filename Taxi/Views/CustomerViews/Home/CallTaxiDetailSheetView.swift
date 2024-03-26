@@ -52,5 +52,5 @@ struct CallTaxiDetailSheetView: View {
 
 #Preview {
     CallTaxiDetailSheetView()
-        .environmentObject(CallTaxiViewModel())
+        .environmentObject(CallTaxiViewModel(auth: AuthenticationViewModel()))
 }

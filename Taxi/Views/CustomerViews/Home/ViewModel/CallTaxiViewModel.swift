@@ -35,9 +35,10 @@ class CallTaxiViewModel: ObservableObject {
     private var subscriptions = Set<AnyCancellable>()
     private var orderListener: ListenerRegistration?
     
-    private var auth = AuthenticationViewModel()
+    let auth: AuthenticationViewModel
     
-    init() {
+    init(auth: AuthenticationViewModel) {
+        self.auth = auth
         $start.debounce(for: .seconds(2), scheduler: DispatchQueue.main)
             .sink(receiveValue: { [weak self] t in
                 self?.geocodeAddress(address: t, completion: {coordinate in

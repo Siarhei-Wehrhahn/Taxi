@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct RegisterOrLogin: View {
-    @StateObject private var viewModel = AuthenticationViewModel()
+    @EnvironmentObject private var viewModel: AuthenticationViewModel
     
     var body: some View {
         if viewModel.showRegister {

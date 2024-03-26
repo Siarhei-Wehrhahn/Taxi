@@ -35,6 +35,7 @@ struct Taxi_App: App {
                 } else if authenticationViewModel.userIsLoggedIn {
                     UserOrCustomerView()
                         .environmentObject(authenticationViewModel)
+                        .environmentObject(CallTaxiViewModel(auth: authenticationViewModel))
                 } else {
                     RegisterOrLogin()
                         .environmentObject(authenticationViewModel)

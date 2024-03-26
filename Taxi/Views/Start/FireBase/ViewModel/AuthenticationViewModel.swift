@@ -20,6 +20,10 @@ class AuthenticationViewModel: ObservableObject {
     @Published var showNickName = false
     @Published var showRegister = false
     
+    @Published var isUserAvailable: Bool = true
+    
+    private var availabilityListener: ListenerRegistration?
+    
     var userIsLoggedIn: Bool {
         self.user != nil
     }
@@ -28,6 +32,26 @@ class AuthenticationViewModel: ObservableObject {
         self.checkLogin()
     }
     
+    func startAvailabilityListener(forUserID userID: String) {
+        let userRef = Firestore.firestore().collection("user").document(userID)
+        
+        availabilityListener = userRef.addSnapshotListener { [weak self] snapshot, error in
+            guard let snapshot = snapshot, snapshot.exists else {
+                print("Error fetching user document: \(error?.localizedDescription ?? "Unknown error")")
+                return
+            }
+            
+            if let data = snapshot.data(), let available = data["aviable"] as? Bool {
+                self?.isUserAvailable = available
+            } else {
+                print("Error parsing availability data")
+            }
+        }
+    }
+    
+    func stopAvailabilityListener() {
+        availabilityListener?.remove()
+    }
     
     func temporarilySetUnavailableForTenMinutes() {
         let orderRef = Firestore.firestore().collection("user").document(user!.id)

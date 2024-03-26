@@ -29,5 +29,5 @@ struct TimePickerSheet: View {
 
 #Preview {
     TimePickerSheet()
-        .environmentObject(CallTaxiViewModel())
+        .environmentObject(CallTaxiViewModel(auth: AuthenticationViewModel()))
 }

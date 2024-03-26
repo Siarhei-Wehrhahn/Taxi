@@ -7,7 +7,7 @@
 
 import SwiftUI
 struct ContentView: View {
-    @StateObject private var callTaxiViewModel = CallTaxiViewModel()
+    @EnvironmentObject private var callTaxiViewModel: CallTaxiViewModel
     @StateObject private var favoriteViewModel = FavoriteViewModel()
     @State var selection = 0
     
@@ -64,6 +64,6 @@ struct ContentView: View {
 }
 #Preview {
     ContentView()
-        .environmentObject(CallTaxiViewModel())
+        .environmentObject(CallTaxiViewModel(auth: AuthenticationViewModel()))
         .environmentObject(FavoriteViewModel())
 }

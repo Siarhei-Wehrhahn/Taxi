@@ -52,5 +52,5 @@ struct HeaderCallTaxiView: View {
 
 #Preview {
     HeaderCallTaxiView()
-        .environmentObject(CallTaxiViewModel())
+        .environmentObject(CallTaxiViewModel(auth: AuthenticationViewModel()))
 }

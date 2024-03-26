@@ -63,5 +63,5 @@ struct FavoriteViewSheet: View {
 #Preview {
     FavoriteViewSheet()
         .environmentObject(FavoriteViewModel())
-        .environmentObject(CallTaxiViewModel())
+        .environmentObject(CallTaxiViewModel(auth: AuthenticationViewModel()))
 }

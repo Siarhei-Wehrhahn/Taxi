@@ -21,4 +21,5 @@ struct Order: Codable, Identifiable, Hashable {
     let passenger: Int?
     var taken: Bool
     var takenInMin10: Bool
+    //var driverId: String
 }

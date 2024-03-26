@@ -14,6 +14,26 @@ class OrderViewModel: ObservableObject {
     
     let db = Firestore.firestore()
     
+    func addDriverIdToOrder(_ order: Order, driverId: String) {
+        if let orderIndex = self.orders.firstIndex(of: order) {
+            self.orders[orderIndex].driverId = driverId
+            
+            let orderRef = db.collection("order").document(order.id.uuidString)
+            orderRef.updateData([
+                "driverId": driverId
+            ]) { error in
+                if let error = error {
+                    print("Error updating order: \(error.localizedDescription)")
+                    print("Error code: \((error as NSError).code)")
+                } else {
+                    print("Order updated successfully")
+                }
+            }
+        }
+        
+        
+    }
+    
     func fetchData() {
         db.collection("order").getDocuments { querySnapshot, error in
             if let error = error {
@@ -53,7 +73,7 @@ class OrderViewModel: ObservableObject {
             }
         }
     }
-
+    
     
     func takenInMin10(_ order: Order) {
         if let orderIndex = self.orders.firstIndex(of: order) {
@@ -70,6 +90,6 @@ class OrderViewModel: ObservableObject {
             }
         }
     }
-
+    
 }
 

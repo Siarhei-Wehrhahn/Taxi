@@ -88,5 +88,5 @@ struct SettingsCallTaxiView: View {
 
 #Preview {
     SettingsCallTaxiView()
-        .environmentObject(CallTaxiViewModel())
+        .environmentObject(CallTaxiViewModel(auth: AuthenticationViewModel()))
 }

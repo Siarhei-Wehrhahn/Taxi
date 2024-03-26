@@ -25,5 +25,5 @@ struct ServiceRowView: View {
 
 #Preview {
     ServiceRowView()
-        .environmentObject(CallTaxiViewModel())
+        .environmentObject(CallTaxiViewModel(auth: AuthenticationViewModel()))
 }

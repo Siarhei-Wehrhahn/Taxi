@@ -9,5 +9,5 @@
 import Foundation
  
 enum ApiKey: String {
-    case chatGpt = ""
+    case chatGpt = "ebciebrciebi434f43f34f34"
 }

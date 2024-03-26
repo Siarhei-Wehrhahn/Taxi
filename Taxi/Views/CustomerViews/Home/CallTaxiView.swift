@@ -24,12 +24,15 @@ struct CallTaxiView: View {
             VStack {
                 HeaderCallTaxiView()
                 
-                MapView(startCoordinate: $viewModel.startCoordinate, endCoordinate: $viewModel.endCoordinate, distance: $distance)
-                    .frame(height: 300)
-                    .clipShape(RoundedRectangle(cornerRadius: 10.0))
-                    .padding()
-                    .shadow(radius: 2, x: 2.2, y: 2.2)
-                    .scaleEffect(CGSize(width: 1.0, height: 1.0))
+                MapView(startCoordinate: $viewModel.startCoordinate,
+                        endCoordinate: $viewModel.endCoordinate,
+                        userCoordinate: viewModel.userLocation, // Passen Sie die Benutzerkoordinaten an die MapView an
+                        distance: $distance)
+                .frame(height: 300)
+                .clipShape(RoundedRectangle(cornerRadius: 10.0))
+                .padding()
+                .shadow(radius: 2, x: 2.2, y: 2.2)
+                .scaleEffect(CGSize(width: 1.0, height: 1.0))
                 
                 SettingsCallTaxiView()
                 
@@ -42,6 +45,7 @@ struct CallTaxiView: View {
                 } else {
                     Button {
                         viewModel.createOrder()
+                        viewModel.startLocationTracking()
                     } label: {
                         Text("Für ca \(String(format: "%.2f", price))€ bestellen")
                             .foregroundStyle(.black)
@@ -78,5 +82,5 @@ struct CallTaxiView: View {
 
 #Preview {
     CallTaxiView()
-        .environmentObject(CallTaxiViewModel())
+        .environmentObject(CallTaxiViewModel(auth: AuthenticationViewModel()))
 }

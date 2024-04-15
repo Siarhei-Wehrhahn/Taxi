@@ -26,7 +26,6 @@ struct CallTaxiView: View {
                 
                 MapView(startCoordinate: $viewModel.startCoordinate,
                         endCoordinate: $viewModel.endCoordinate,
-                        userCoordinate: viewModel.userLocation, // Passen Sie die Benutzerkoordinaten an die MapView an
                         distance: $distance)
                 .frame(height: 300)
                 .clipShape(RoundedRectangle(cornerRadius: 10.0))
@@ -44,8 +43,12 @@ struct CallTaxiView: View {
                     
                 } else {
                     Button {
-                        viewModel.createOrder()
-                        viewModel.startLocationTracking()
+                        if !viewModel.start.isEmpty && !viewModel.destination.isEmpty {
+                            viewModel.createOrder()
+                            viewModel.showToast.toggle()
+                        } else {
+                            viewModel.showEmtyTextAlert = true
+                        }
                     } label: {
                         Text("Für ca \(String(format: "%.2f", price))€ bestellen")
                             .foregroundStyle(.black)
@@ -56,28 +59,74 @@ struct CallTaxiView: View {
                     .foregroundColor(.white)
                     .clipShape(RoundedRectangle(cornerRadius: 10))
                     .shadow(radius: 2, x: 2.2, y: 2.2)
+                    .toast(message: "Erfolgreich bestellt!", isPresented: $viewModel.showToast)
+                    
+                    
                 }
             }
             .sheet(isPresented: $viewModel.showSheet) {
                 CallTaxiDetailSheetView()
                     .presentationDetents([.medium, .large])
             }
-            .alert("Angenommen!", isPresented: $viewModel.showTakenAlert) {
-                Text("Deine Fahrt wurde angenommen! \nDein fahrer wird so schnell wie möglich bei dir sein.")
+            .alert(isPresented: Binding<Bool>.constant(viewModel.showEmtyTextAlert || viewModel.showTakenAlert || viewModel.showTakenLaterAlert)) {
+                let message: String
+                let title: String
+                let dismissButtonTitle: String
+                let dismissAction: () -> Void
                 
-                Button("OK!") {
-                    viewModel.showTakenAlert = false
+                if viewModel.showEmtyTextAlert {
+                    title = "Fehlende Informationen"
+                    message = "Bitte geben Sie Start- und Zielpunkte ein."
+                    dismissButtonTitle = "OK!"
+                    dismissAction = { viewModel.showEmtyTextAlert = false }
+                } else if viewModel.showTakenAlert {
+                    title = "Angenommen!"
+                    message = "Deine Fahrt wurde angenommen! Dein Fahrer wird so schnell wie möglich bei dir sein."
+                    dismissButtonTitle = "OK!"
+                    dismissAction = { viewModel.showTakenAlert = false }
+                } else if viewModel.showTakenLaterAlert {
+                    title = "Angenommen in 10 Minuten"
+                    message = "Deine Fahrt wird in 10 Minuten angenommen!"
+                    dismissButtonTitle = "OK!"
+                    dismissAction = { viewModel.showTakenLaterAlert = false }
+                } else {
+                    title = ""
+                    message = ""
+                    dismissButtonTitle = ""
+                    dismissAction = {}
                 }
-            }
-            .alert("Angenommen aber dauert 10min", isPresented: $viewModel.showTakenLaterAlert) {
-                Text("Deine fahrt wird in 10min angenommen!")
-                Button("OK!") {
-                    viewModel.showTakenLaterAlert = false
-                }
+                
+                return Alert(
+                    title: Text(title),
+                    message: Text(message),
+                    dismissButton: .default(Text(dismissButtonTitle), action: dismissAction)
+                )
             }
         }
     }
 }
+
+extension View {
+    func toast(message: String, isPresented: Binding<Bool>) -> some View {
+        self.overlay(
+            ZStack {
+                if isPresented.wrappedValue {
+                    ToastView(message: message)
+                        .transition(.move(edge: .bottom))
+                        .onAppear {
+                            withAnimation {
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                                    isPresented.wrappedValue = false
+                                }
+                            }
+                        }
+                }
+            }
+        )
+    }
+}
+
+
 
 
 #Preview {

@@ -12,6 +12,7 @@ import Firebase
 struct Taxi_App: App {
     @StateObject private var viewRouter = ViewRouter()
     @StateObject private var authenticationViewModel = AuthenticationViewModel()
+    @StateObject private var orderViewModel = OrderViewModel()
     
     init() {
         FirebaseConfiguration.shared.setLoggerLevel(.min)
@@ -35,6 +36,7 @@ struct Taxi_App: App {
                 } else if authenticationViewModel.userIsLoggedIn {
                     UserOrCustomerView()
                         .environmentObject(authenticationViewModel)
+                        .environmentObject(orderViewModel)
                         .environmentObject(CallTaxiViewModel(auth: authenticationViewModel))
                 } else {
                     RegisterOrLogin()

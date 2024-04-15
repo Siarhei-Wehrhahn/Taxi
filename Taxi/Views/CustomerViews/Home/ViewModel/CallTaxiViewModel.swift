@@ -15,10 +15,12 @@ class CallTaxiViewModel: ObservableObject {
     @Published var order: [Order] = []
     @Published var showTakenAlert = false
     @Published var showTakenLaterAlert = false
+    @Published var showToast = false
     @Published var showSheet: Bool = false
     @Published var time = Date()
     @Published var start = ""
     @Published var destination = ""
+    @Published var showEmtyTextAlert = false
     @Published var showDatePicker = false
     
     @Published var isCheating = false
@@ -65,6 +67,8 @@ class CallTaxiViewModel: ObservableObject {
         do {
             try FirebaseManager.shared.fireStore.collection("order").document(id.uuidString).setData(from: order)
             self.order.append(order)
+            self.start = ""
+            self.destination = ""
         } catch {
             print("Could not create user: \(error)")
         }

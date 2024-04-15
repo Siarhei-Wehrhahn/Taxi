@@ -10,7 +10,7 @@ import SwiftUI
 // Umkreis von *** die fahrten anzeigen lassen mit snapshotlistener
 
 struct OrdersView: View {
-    @StateObject private var viewModel = OrderViewModel()
+    @EnvironmentObject private var viewModel: OrderViewModel
     @EnvironmentObject private var authViewModel: AuthenticationViewModel
     
     var body: some View {
@@ -61,11 +61,18 @@ struct OrdersView: View {
                             
                             HStack(spacing: 33) {
                                 
+                                if order.taken || order.takenInMin10 {
+                                    Button {
+                                        viewModel.addOrderToDrivenOrders(order: order)
+                                    } label: {
+                                        Text("Fahrt beendet")
+                                    }
+                                    .buttonStyle(BorderedProminentButtonStyle())
+                                }
+                                
                                 if !order.takenInMin10 {
                                     Button {
                                         viewModel.markOrderAsTaken(order)
-                                        viewModel.addDriverIdToOrder(order, driverId: authViewModel.user!.id)
-                                        authViewModel.startAvailabilityListener(forUserID: order.driverId)
                                     } label: {
                                         Text(order.taken ? "Abbrechen" : "Annehmen")
                                     }
@@ -75,8 +82,6 @@ struct OrdersView: View {
                                 if !order.taken {
                                     Button {
                                         viewModel.takenInMin10(order)
-                                        viewModel.addDriverIdToOrder(order, driverId: authViewModel.user!.id)
-                                        authViewModel.startAvailabilityListener(forUserID: order.driverId)
                                     } label: {
                                         Text(order.takenInMin10 ? "Abbrechen" : "In 10min Annehmen")
                                     }
@@ -102,13 +107,12 @@ struct OrdersView: View {
                     EmptyView()
                 }
             }
-            .onAppear {
-                viewModel.fetchData()
-            }
         }
     }
 }
 
 #Preview {
     OrdersView()
+        .environmentObject(AuthenticationViewModel())
+        .environmentObject(OrderViewModel())
 }

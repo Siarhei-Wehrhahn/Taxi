@@ -69,7 +69,9 @@ struct MapView: UIViewRepresentable {
             uiView.setRegion(MKCoordinateRegion(rect), animated: true)
 
             // Berechne die Distanz zwischen den Koordinaten und aktualisiere die Entfernung
-            self.calculateDistance(start: startCoordinate!, end: endCoordinate!)
+            if startCoordinate != nil && endCoordinate != nil {
+                self.calculateDistance(start: startCoordinate!, end: endCoordinate!)
+            }
         }
 
         // Füge Stecknadeln für Start- und Zielpunkt hinzu

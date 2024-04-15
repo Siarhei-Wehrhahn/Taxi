@@ -49,7 +49,11 @@ struct ChatView: View {
                         .padding(.trailing, 10)
                     
                     Button {
-                        viewModel.sendMessage()
+                        if !viewModel.userInput.isEmpty {
+                            viewModel.sendMessage()
+                        } else {
+                            viewModel.showAlert.toggle()
+                        }
                     } label: {
                         Image(systemName: "paperplane.fill")
                             .font(Font.system(size: 25))
@@ -58,6 +62,13 @@ struct ChatView: View {
                 .padding(.top, 10)
                 .padding(.bottom, 30)
             }
+        }
+        .alert(isPresented: $viewModel.showAlert) {
+            Alert(
+                title: Text("Fehlende Informationen"),
+                message: Text("Bitte geben Sie einen Text ein."),
+                dismissButton: .default(Text("OK!"))
+            )
         }
     }
 }

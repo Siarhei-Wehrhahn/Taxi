@@ -12,6 +12,7 @@ class ChatViewModel: ObservableObject {
     @Published var messages: [String] = []
     @Published var userMessages: [String] = []
     @Published var userInput = ""
+    @Published var showAlert = false
     let repo = ChatRepository()
     
     @MainActor

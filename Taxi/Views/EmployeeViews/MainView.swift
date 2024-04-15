@@ -8,32 +8,36 @@
 import SwiftUI
 
 struct MainView: View {
+    @EnvironmentObject private var viewModel: OrderViewModel
     @State private var isOrdersView = false
     
     var body: some View {
-            TabView {
-                
-                OrdersView()
-                    .onAppear {
-                        isOrdersView = true
-                    }
-                    .tabItem {
-                        Image(systemName: isOrdersView ? "book" : "book.closed")
-                        Text("Aufträge")
-                    }
-                
-                HistoryView()
-                    .onAppear {
-                        isOrdersView = false
-                    }
-                    .tabItem {
-                        Image(systemName: "clock.arrow.circlepath")
-                        Text("Verlauf")
-                    }
+        TabView {
+            OrdersView()
+                .onAppear {
+                    isOrdersView = true
+                    print("\(viewModel.orders.count)")
+                }
+                .tabItem {
+                    Image(systemName: isOrdersView ? "book.fill" : "book.closed.fill")
+                    Text("Aufträge")
+                }
+            
+            HistoryView()
+                .onAppear {
+                    isOrdersView = false
+                }
+                .tabItem {
+                    Image(systemName: "clock.arrow.circlepath")
+                    Text("Verlauf")
+                }
         }
     }
 }
 
+
+
 #Preview {
     MainView()
+        .environmentObject(OrderViewModel())
 }

@@ -10,25 +10,24 @@ import SwiftUI
 struct FavoriteView: View {
     @EnvironmentObject private var favoriteViewModel: FavoriteViewModel
     @EnvironmentObject private var callTaxiViewModel: CallTaxiViewModel
+    @EnvironmentObject private var authViewModel: AuthenticationViewModel
     @Binding var selection: Int
     
     var body: some View {
         NavigationStack {
             VStack {
                 List(favoriteViewModel.listOfTrips) { trip in
-                    VStack {
-                        Button {
-                            callTaxiViewModel.start = trip.start
-                            callTaxiViewModel.destination = trip.destination
-                            selection = 0
-                        } label: {
-                            HStack {
-                                Text("von:      \(trip.start) \nnach:    \(trip.destination)")
-                                
-                                Spacer()
-                                
-                                Image(systemName: "chevron.right")
-                            }
+                    Button {
+                        callTaxiViewModel.start = trip.start
+                        callTaxiViewModel.destination = trip.destination
+                        selection = 0
+                    } label: {
+                        HStack {
+                            Text("von:      \(trip.start) \nnach:    \(trip.destination)")
+                            
+                            Spacer()
+                            
+                            Image(systemName: "chevron.right")
                         }
                     }
                     .swipeActions {
@@ -44,14 +43,17 @@ struct FavoriteView: View {
                 }
             }
         }
-        .navigationTitle("Favoriten")
-        .navigationBarTitleDisplayMode(.automatic)
+        .toolbarTitleDisplayMode(.inline)
         .sheet(isPresented: $favoriteViewModel.showSheet, content: {
             FavoriteViewSheet()
                 .presentationDetents([.medium, .large])
         })
+        .onAppear {
+            favoriteViewModel.loadFavoriteTrips()
+        }
     }
 }
+
 
 #Preview {
     FavoriteView(selection: .constant(2))

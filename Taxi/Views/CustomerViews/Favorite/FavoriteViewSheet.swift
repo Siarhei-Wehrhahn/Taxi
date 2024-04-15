@@ -50,10 +50,8 @@ struct FavoriteViewSheet: View {
                 Spacer()
             }
             .navigationBarItems(trailing: Button("Speichern") {
-                viewModel.addTrip()
+                viewModel.addTripToFavorites()
                 dismiss()
-                viewModel.trip.start = ""
-                viewModel.trip.destination = ""
                 print("FavoriteViewSheet: \(viewModel.listOfTrips)")
             })
         }

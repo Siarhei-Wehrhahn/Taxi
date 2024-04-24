@@ -20,7 +20,7 @@ struct CallTaxiView: View {
     }
     
     var body: some View {
-        ScrollView {
+        ScrollView(showsIndicators: true) {
             VStack {
                 HeaderCallTaxiView()
                 
@@ -43,12 +43,8 @@ struct CallTaxiView: View {
                     
                 } else {
                     Button {
-                        if !viewModel.start.isEmpty && !viewModel.destination.isEmpty {
-                            viewModel.createOrder()
-                            viewModel.showToast.toggle()
-                        } else {
-                            viewModel.showEmtyTextAlert = true
-                        }
+                        viewModel.createOrder()
+                        viewModel.showToast.toggle()
                     } label: {
                         Text("Für ca \(String(format: "%.2f", price))€ bestellen")
                             .foregroundStyle(.black)
@@ -68,18 +64,13 @@ struct CallTaxiView: View {
                 CallTaxiDetailSheetView()
                     .presentationDetents([.medium, .large])
             }
-            .alert(isPresented: Binding<Bool>.constant(viewModel.showEmtyTextAlert || viewModel.showTakenAlert || viewModel.showTakenLaterAlert)) {
+            .alert(isPresented: Binding<Bool>.constant(viewModel.showTakenAlert || viewModel.showTakenLaterAlert)) {
                 let message: String
                 let title: String
                 let dismissButtonTitle: String
                 let dismissAction: () -> Void
                 
-                if viewModel.showEmtyTextAlert {
-                    title = "Fehlende Informationen"
-                    message = "Bitte geben Sie Start- und Zielpunkte ein."
-                    dismissButtonTitle = "OK!"
-                    dismissAction = { viewModel.showEmtyTextAlert = false }
-                } else if viewModel.showTakenAlert {
+                if viewModel.showTakenAlert {
                     title = "Angenommen!"
                     message = "Deine Fahrt wurde angenommen! Dein Fahrer wird so schnell wie möglich bei dir sein."
                     dismissButtonTitle = "OK!"

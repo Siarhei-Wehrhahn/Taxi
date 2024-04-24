@@ -20,7 +20,6 @@ class CallTaxiViewModel: ObservableObject {
     @Published var time = Date()
     @Published var start = ""
     @Published var destination = ""
-    @Published var showEmtyTextAlert = false
     @Published var showDatePicker = false
     
     @Published var isCheating = false
@@ -60,6 +59,10 @@ class CallTaxiViewModel: ObservableObject {
         setupOrderListener()
     }
     
+    deinit {
+        orderListener?.remove()
+    }
+    
     func createOrder() {
         let id = UUID()
         let order = Order(id: id, userId: auth.user!.id, userName: auth.user!.nickName, start: self.start, destination: self.destination, time: self.time, kids: self.children, luggage: self.luggage, pets: self.pets, helpToSitIn: self.helpToSitIn, passenger: Int(self.numberOfPassager), taken: false, takenInMin10: false)
@@ -67,8 +70,8 @@ class CallTaxiViewModel: ObservableObject {
         do {
             try FirebaseManager.shared.fireStore.collection("order").document(id.uuidString).setData(from: order)
             self.order.append(order)
-            self.start = ""
-            self.destination = ""
+//            self.start = ""
+//            self.destination = ""
         } catch {
             print("Could not create user: \(error)")
         }
@@ -82,13 +85,15 @@ class CallTaxiViewModel: ObservableObject {
     
     func geocodeAddress(address: String, completion: @escaping (CLLocationCoordinate2D?) -> Void) {
         let geocoder = CLGeocoder()
-        geocoder.geocodeAddressString(address) { placemarks, error in
-            guard error == nil, let placemark = placemarks?.first else {
-                print("Geocoding error: \(error?.localizedDescription ?? "Unknown error")")
-                completion(nil)
-                return
+        if !address.isEmpty {
+            geocoder.geocodeAddressString(address) { placemarks, error in
+                guard error == nil, let placemark = placemarks?.first else {
+                    print("Geocoding error: \(error?.localizedDescription ?? "Unknown error")")
+                    completion(nil)
+                    return
+                }
+                completion(placemark.location?.coordinate)
             }
-            completion(placemark.location?.coordinate)
         }
     }
     
@@ -160,10 +165,12 @@ class CallTaxiViewModel: ObservableObject {
                     let modifiedOrder = try? change.document.data(as: Order.self)
                     if let modifiedOrder = modifiedOrder {
                         if modifiedOrder.taken {
+                            print("CallTaxiViewModel: taken succed")
                             self?.showTakenAlert = true
                         }
                         
                         if modifiedOrder.takenInMin10 {
+                            print("CallTaxiViewModel: TakenLaterAlert succed")
                             self?.showTakenLaterAlert = true
                         }
                     }
